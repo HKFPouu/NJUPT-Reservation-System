@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="identify-words">
+    <text class="full-name">南邮校史展览馆、校史陈列馆</text>
+    <text class="apply-text">预约申请</text>
+  </view>
+  <view class="crest-logo">
+    <image class="crest-logo-img" src="../../static/crest.png" ></image>
+  </view>
+  <view class="team-visit">
+    <text class="entrance">团队参观</text>
+    <text class="introduction">通信展览馆 校史展览馆 —— 团体参观</text>
+  </view>
+  <view class="cognitive-learning">
+    <text class="entrance">认知学习</text>
+    <text class="introduction">通信展览馆 校史陈列馆 —— 学生认知实习参观</text>
+  </view>
+  <view class="footer">
+    <text class="footer-text">@2019 NJUPT</text>
+  </view>
+</view>
