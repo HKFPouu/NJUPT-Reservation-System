@@ -1,0 +1,35 @@
+<view class="team">
+  <view class="teamForm">
+    <labelValue label="联系单位" />
+    <labelValue label="陪同领导" />
+    <scene placeArr="{{teamFormScene}}" />
+  </view>
+  <view class="teamGuest">
+    <view class="teamGuestText">
+      <text>嘉宾信息</text>
+    </view>
+    <labelValue label="来&emsp;&emsp;宾" />
+    <labelValue label="单位职务" />
+    <view class="peopleNum">
+      <text class="Label" decode="{{true}}">人&emsp;&emsp;数：</text>
+      <stepper />
+    </view>
+    <view class="alumni flex">
+      <label class="Label">是否校友：</label>
+      <checkbox-group bindchange="checkboxChange" class="alumnCheckBox flex">
+        <label class="checkbox" wx:for="{{alumni}}">
+          <checkbox value="{{item.name}}" checked="{{item.checked}}" />
+          {{item.value}}
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="welcome">
+      <labelValue label="欢&ensp;迎&ensp;语"/>
+      <view class="welcomeDemo">
+        <label>欢迎语将在通信展览馆门口液晶屏上显示。</label>
+        <label>例如：欢迎XX参观通信展览馆</label>
+      </view>
+    </view>
+  </view>
+  <contact />
+</view>

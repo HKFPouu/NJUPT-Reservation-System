@@ -1,0 +1,9 @@
+<view class="scene flex">
+  <text class="Label">参观场所：</text>
+  <checkbox-group bindchange="checkboxChange" class="sceneCheckBox">
+    <label class="checkbox" wx:for="{{placeArr}}">
+      <checkbox value="{{item.name}}" checked="{{item.checked}}" />
+      {{item.value}}
+    </label>
+  </checkbox-group>
+</view>

@@ -1,0 +1,10 @@
+@import "../../app.wxss";
+
+.label-value {
+  height: 8vh;
+}
+
+.label-value input {
+  border: 1px solid #ddd;
+  width: 70%;
+}

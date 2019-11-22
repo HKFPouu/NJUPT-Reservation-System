@@ -1,14 +1,13 @@
-//index.js
-//获取应用实例
 const app = getApp()
 
 Page({
-  data: {
+  data: {},
+  bindEntranceTap: function (event) {
+    let page = event.currentTarget.dataset.alphaBeta == 1 ? 'teamVisit' : 'cognitiveLearning'
+    wx.navigateTo({
+      url: `../${page}/${page}`
+    })
   },
-  onLoad: function () {
-
-  },
-  getUserInfo: function(e) {
-
-  }
+  onLoad: function () {},
+  getUserInfo: function (e) {}
 })

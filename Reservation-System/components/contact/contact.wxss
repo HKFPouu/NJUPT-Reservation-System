@@ -1,0 +1,9 @@
+.contact{
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: flex-start;
+  font-size: 25rpx;
+  color: rgb(206, 206, 206);
+}
