@@ -1,0 +1,14 @@
+@import "../../app.wxss";
+
+.scene {
+  height: 15vh;
+}
+
+.sceneCheckBox {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: flex-start;
+}

@@ -1,12 +1,11 @@
-/**app.wxss**/
-.container {
-  height: 100vh;
-  width: 98%;
-  margin: auto;
+.Label {
+  width: 200rpx;
+  font-size: 35rpx;
+  letter-spacing: 5rpx;
+  text-align: center;
+}
+.flex{
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  position: relative;
 }

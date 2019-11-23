@@ -1,0 +1,39 @@
+.team {
+  width: 86%;
+  margin: 0 auto;
+}
+
+.teamGuestText {
+  text-align: center;
+  font-size: 40rpx;
+}
+
+.peopleNum,
+.alumni {
+  height: 10vh;
+}
+
+.peopleNum {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.teamStepper {
+  width: 70%;
+}
+
+.alumnCheckBox {
+  width: 70%;
+  height: 100%;
+}
+
+.welcomeDemo {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  color: rgb(185, 185, 185);
+}
