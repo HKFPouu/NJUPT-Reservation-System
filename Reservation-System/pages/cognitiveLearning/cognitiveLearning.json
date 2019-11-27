@@ -1,4 +1,9 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "stepper": "../../components/stepper/stepper",
+    "labelValue":"../../components/labelValue/labelValue",
+    "scene":"../../components/scene/scene",
+    "contact":"../../components/contact/contact"
+  },
   "navigationBarTitleText": "认知学习"
 }  

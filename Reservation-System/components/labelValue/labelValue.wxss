@@ -7,4 +7,5 @@
 .label-value input {
   border: 1px solid #ddd;
   width: 70%;
+  padding-left: 8rpx;
 }

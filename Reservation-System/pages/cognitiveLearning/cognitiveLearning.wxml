@@ -1,3 +1,20 @@
-<view class="container">
-456
+<view class="cognitiveLearning">
+  <view class="cognitiveLearningForm">
+    <labelValue label="联&ensp;系&ensp;人" name="contactMan" bind:changeStatus="changeStatus" />
+    <labelValue label="联系单位" name="contactUnit" bind:changeStatus="changeStatus" />
+    <labelValue label="电&emsp;&emsp;话" name="contactPhone" bind:changeStatus="changeStatus" />
+    <scene placeArr="{{cognitiveLearningScene}}" />
+  </view>
+  <view class="cognitiveLearningGuest">
+    <view class="cognitiveLearningGuestText">
+      <text>学生信息</text>
+    </view>
+    <labelValue label="专&emsp;&emsp;业" name="major" bind:changeStatus="changeStatus" />
+    <labelValue label="班&emsp;&emsp;级" name="class" bind:changeStatus="changeStatus" />
+    <stepper />
+  </view>
+  <button class="cognitiveLearningSubmit" bindtap="submit">提交申请</button>
+  <view class="contact">
+    <contact />
+  </view>
 </view>

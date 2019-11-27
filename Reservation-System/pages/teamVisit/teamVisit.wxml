@@ -1,35 +1,67 @@
 <view class="team">
   <view class="teamForm">
-    <labelValue label="联系单位" />
-    <labelValue label="陪同领导" />
-    <scene placeArr="{{teamFormScene}}" />
+    <labelValue 
+      label="联系单位" 
+      name="contactUnit" 
+      bind:changeStatus="changeStatus"
+    />
+    <labelValue 
+      label="陪同领导" 
+      name="accompanyLeader" 
+      bind:changeStatus="changeStatus"
+    />
+    <labelValue 
+      label="联&ensp;系&ensp;人" 
+      name="contactMan"
+      bind:changeStatus="changeStatus"
+    />
+    <labelValue 
+      label="联系电话" 
+      name="contactPhone"
+      bind:changeStatus="changeStatus"
+      />
+    <scene 
+    placeArr="{{teamFormScene}}" 
+    bind:changeScene="changeScene"
+    />
   </view>
   <view class="teamGuest">
     <view class="teamGuestText">
       <text>嘉宾信息</text>
     </view>
-    <labelValue label="来&emsp;&emsp;宾" />
-    <labelValue label="单位职务" />
-    <view class="peopleNum">
-      <text class="Label" decode="{{true}}">人&emsp;&emsp;数：</text>
-      <stepper />
-    </view>
+    <labelValue 
+      label="来&emsp;&emsp;宾" 
+      name="gust" 
+      bind:changeStatus="changeStatus"
+    />
+    <labelValue 
+      label="单位职务" 
+      name="UnitPosition" 
+      bind:changeStatus="changeStatus"
+    />
+    <stepper bind:changeNum="changeNum"/>
     <view class="alumni flex">
       <label class="Label">是否校友：</label>
-      <checkbox-group bindchange="checkboxChange" class="alumnCheckBox flex">
-        <label class="checkbox" wx:for="{{alumni}}">
-          <checkbox value="{{item.name}}" checked="{{item.checked}}" />
-          {{item.value}}
-        </label>
-      </checkbox-group>
+      <radio-group class="radio-group" bindchange="radioChange" class="alumnCheckBox flex">
+        <radio class="radio" wx:for-items="{{alumni}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
+          <text>{{item.value}}</text>
+        </radio>
+      </radio-group>
     </view>
     <view class="welcome">
-      <labelValue label="欢&ensp;迎&ensp;语"/>
+      <labelValue 
+        label="欢&ensp;迎&ensp;语" 
+        name="welcomeMessage" 
+        bind:changeStatus="changeStatus"
+      />
       <view class="welcomeDemo">
         <label>欢迎语将在通信展览馆门口液晶屏上显示。</label>
         <label>例如：欢迎XX参观通信展览馆</label>
       </view>
     </view>
   </view>
-  <contact />
+  <button class="teamSubmit" bindtap="submit">提交申请</button>
+  <view class="contact">
+    <contact />
+  </view>
 </view>

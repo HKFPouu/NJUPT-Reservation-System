@@ -14,6 +14,7 @@ Component({
         num: num,
         minusStatus: minusStatus
       });
+      this.triggerEvent('changeNum',this.data.num)
     },
     bindPlus: function () {
       let num = this.data.num;
@@ -23,12 +24,14 @@ Component({
         num: num,
         minusStatus: minusStatus
       });
+      this.triggerEvent('changeNum',this.data.num)
     },
     bindManual: function (e) {
       let num = e.detail.value;
       this.setData({
         num: num
       });
+      this.triggerEvent('changeNum',this.data.num)
     }
   }
 })

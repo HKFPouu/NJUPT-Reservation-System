@@ -31,3 +31,13 @@
 .stepper .disabled {
   color: #ccc;
 }
+
+.peopleNum {
+  height: 10vh;
+}
+
+.peopleNum {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
