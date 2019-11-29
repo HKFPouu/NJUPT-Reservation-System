@@ -4,7 +4,8 @@
 
 .teamForm,
 .teamGuest,
-.contact {
+.contact,
+.teamSignature {
   width: 86%;
   padding-left: 5%;
   padding-right: 5%;
@@ -13,7 +14,8 @@
 }
 
 .teamGuest,
-.contact {
+.contact,
+.teamSignature {
   margin-top: 3vh;
 }
 
@@ -56,4 +58,17 @@
   font-weight: 500;
   margin: 3vh 0;
   border-radius: 20rpx;
+}
+
+.teamSignature {
+  justify-content: space-around;
+  padding: 2vh 5%;
+}
+
+.teamSignature input {
+  width: 30vw;
+  height: 10vh;
+  font-size: 40rpx;
+  border: 1px solid #ddd;
+  padding-left: 10rpx;
 }

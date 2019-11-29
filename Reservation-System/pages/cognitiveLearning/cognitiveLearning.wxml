@@ -1,5 +1,6 @@
 <view class="cognitiveLearning">
   <view class="cognitiveLearningForm">
+    <Date bind:changeDate="changeDate" bind:changeTime="changeTime" today="{{today}}" />
     <labelValue label="联&ensp;系&ensp;人" name="contactMan" bind:changeStatus="changeStatus" />
     <labelValue label="联系单位" name="contactUnit" bind:changeStatus="changeStatus" />
     <labelValue label="电&emsp;&emsp;话" name="contactPhone" bind:changeStatus="changeStatus" />
@@ -12,6 +13,17 @@
     <labelValue label="专&emsp;&emsp;业" name="major" bind:changeStatus="changeStatus" />
     <labelValue label="班&emsp;&emsp;级" name="class" bind:changeStatus="changeStatus" />
     <stepper />
+  </view>
+  <view class="cognitiveLearningSignature flex">
+    <text>联系单位负责人签章：</text>
+    <input type="text" />
+  </view>
+  <view class="cognitiveLearningDownload flex">
+    <image class="" src="../../static/download.png" bindtap = "download"/>
+    <view class="cognitiveLearningDownload-text flex" >
+      <text>请自行下载左侧的校内经费转账单</text>
+      <text>由部分领导签字后移交财务处</text>
+    </view>
   </view>
   <button class="cognitiveLearningSubmit" bindtap="submit">提交申请</button>
   <view class="contact">

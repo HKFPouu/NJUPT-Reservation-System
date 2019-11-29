@@ -6,14 +6,14 @@
   margin: 0 auto;
 }
 
-.stepper text {
+.stepper-text {
   width: 19px;
   line-height: 26px;
   text-align: center;
   float: left;
 }
 
-.stepper input {
+.stepper-input {
   width: 40px;
   height: 26px;
   float: left;

@@ -1,0 +1,28 @@
+<view class="calendar {{ifShowCalender}}">
+  <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay" id="calendar"></calendar>
+  <image src="../../static/close.png" bindtap="ifShowCalender" class="calendar-image"/>
+</view>
+<view class="label-value flex" bindtap="ifShowCalender">
+  <text class="Label">参观日期：</text>
+  <input type="text" auto-focus placeholder="{{today}}" disabled="{{true}}" value="{{date}}" class="label-value-input"/>
+  <image src="../../static/calender.png" alt=""  class="label-value-image"/>
+</view>
+<view class="label-value flex" bindtap="ifShowTimeSelector">
+  <text class="Label">参观时间：</text>
+  <input type="text" auto-focus placeholder="{{time}}" disabled="{{true}}" value="{{time}}" class="label-value-input"/>
+</view>
+<view class="time {{ifShowTimeSelector}}">
+  <picker-view indicator-style="height: 50px;" style="width: 50%; height: 250px; margin:auto" value="{{value}}" bindchange="changeTime">
+    <picker-view-column>
+      <view wx:for="{{hours}}" style="line-height: 50px;text-align:center" wx:key="index">
+        {{item}}时
+      </view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{mins}}" style="line-height: 50px;text-align:center" wx:key="index">
+        {{item}}分
+      </view>
+    </picker-view-column>
+  </picker-view>
+  <image src="../../static/close.png" bindtap="ifShowTimeSelector" class="time-image"/>
+</view>

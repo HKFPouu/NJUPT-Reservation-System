@@ -4,8 +4,9 @@
   height: 8vh;
 }
 
-.label-value input {
+.label-value-input {
   border: 1px solid #ddd;
   width: 70%;
   padding-left: 8rpx;
+  z-index: 1;
 }

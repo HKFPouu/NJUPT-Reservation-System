@@ -1,8 +1,10 @@
-const app = getApp()
+const app = getApp();
 
 Page({
   data: {
-    teamFormScene:['通信展览馆','校史展览馆'],
+    today: '',
+    ifInput: false,
+    teamFormScene: ['通信展览馆', '校史展览馆'],
     alumni: [{
         name: '',
         value: '否',
@@ -19,15 +21,23 @@ Page({
       contactMan: '',
       contactPhone: '',
       place: [],
-      Date: '',
+      date: '',
       time: '',
       gust: '',
       UnitPosition: '',
-      peopleNumber: '',
-      ifAlumni: '',
+      peopleNumber: 1,
+      ifAlumni: false,
       welcomeMessage: ''
     }
   },
+
+  onShow() {
+    let today = new Date().toLocaleDateString().replace(/\\/g,"-");
+    this.setData({
+      today: today
+    })
+  },
+
   radioChange(e) {
     let form = this.data.form;
     form.ifAlumni = !!e.detail.value
@@ -35,20 +45,43 @@ Page({
       form: form
     })
   },
-  changeNum(child){
+
+  changeNum(child) {
     let form = this.data.form;
     form.peopleNumber = child.detail
     this.setData({
       form: form
     })
   },
-  changeScene(child){
+
+  changeDate(child) {
+    let form = this.data.form,
+      ifInput = child.detail.ifInput
+    form.date = child.detail.date
+    this.setData({
+      form: form,
+      ifInput: ifInput
+    })
+  },
+
+  changeTime(child) {
+    let form = this.data.form,
+      ifInput = child.detail.ifInput
+    form.time = child.detail.time
+    this.setData({
+      form: form,
+      ifInput: ifInput
+    })
+  },
+
+  changeScene(child) {
     let form = this.data.form;
     form.place = [...child.detail]
     this.setData({
       form: form
     })
   },
+
   changeStatus(child) {
     let form = this.data.form;
     switch (child.detail.name) {
@@ -78,14 +111,10 @@ Page({
       form: form
     })
   },
+
   submit() {
     let sendJson = JSON.parse(JSON.stringify(this.data.form))
     console.log(sendJson)
-  },
-  onLoad: function () {
-
-  },
-  getUserInfo: function (e) {
-
   }
+
 })

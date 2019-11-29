@@ -8,8 +8,6 @@ Page({
       url: `../${page}/${page}`
     })
   },
-  onLoad: function () {},
-  getUserInfo: function (e) {},
   onReady: function () {
     this.loginComponent = this.selectComponent("#login");
   },
@@ -22,7 +20,6 @@ Page({
     this.loginComponent.hideLogin();
     wx.login({
       success: res => {
-        console.log(res.code)
         wx.request({
           url: `http://139.9.140.149:8080/wLogin?code=${res.code}`,
           method: 'post',

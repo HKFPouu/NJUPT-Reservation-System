@@ -1,12 +1,8 @@
 {
   "pages": [
-<<<<<<< HEAD
-    "pages/index/index"
-=======
     "pages/index/index",
     "pages/teamVisit/teamVisit",
     "pages/cognitiveLearning/cognitiveLearning"
->>>>>>> bac2169cce8008e7f557d512aa0b5b179de958c9
   ],
   "window": {
     "backgroundTextStyle": "light",

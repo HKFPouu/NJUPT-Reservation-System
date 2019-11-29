@@ -3,7 +3,8 @@
     "stepper": "../../components/stepper/stepper",
     "labelValue":"../../components/labelValue/labelValue",
     "scene":"../../components/scene/scene",
-    "contact":"../../components/contact/contact"
+    "contact":"../../components/contact/contact",
+    "Date": "../../components/Date/Date"
   },
   "navigationBarTitleText": "认知学习"
 }  

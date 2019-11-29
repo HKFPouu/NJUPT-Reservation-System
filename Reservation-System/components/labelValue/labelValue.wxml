@@ -1,4 +1,4 @@
 <view class="label-value flex">
   <text class="Label" decode="{{true}}">{{label}}：</text>
-  <input type="text" auto-focus bindblur="changeStatus" id="{{name}}"/>
+  <input type="text" auto-focus bindblur="changeStatus" id="{{name}}" class="label-value-input" disabled="{{ifInput}}"/>
 </view>

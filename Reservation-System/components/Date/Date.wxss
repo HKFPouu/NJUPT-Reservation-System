@@ -1,0 +1,60 @@
+@import "../../app.wxss";
+
+.label-value {
+  height: 8vh;
+}
+
+.label-value-input {
+  border: 1px solid #ddd;
+  color: #757575;
+  width: 70%;
+  padding-left: 8rpx;
+  text-align: center;
+}
+
+.label-value-image {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  right: 70rpx;
+}
+
+.calendar,
+.time {
+  width: 80%;
+  height: 56%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  z-index: 2;
+  box-shadow: 5rpx 5rpx 5rpx 5rpx #ddd;
+  transform: translate(-50%, -50%);
+}
+
+.showCalender,
+.showTimeSelector {
+  display: block;
+}
+
+.hiddenCalender,
+.hiddenTimeSelector {
+  display: none;
+}
+
+.calendar-image {
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  bottom: 2%;
+  right: 47%;
+}
+
+.time-image {
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  top: 9%;
+  right: 5%;
+  z-index: 3;
+}

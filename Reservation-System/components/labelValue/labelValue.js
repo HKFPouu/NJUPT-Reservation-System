@@ -1,7 +1,8 @@
 Component({
   properties: {
     'label': String,
-    'name': String
+    'name': String,
+    'ifInput': Boolean
   },
   methods: {
     changeStatus: function (e) {
