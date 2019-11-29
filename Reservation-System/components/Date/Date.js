@@ -26,7 +26,7 @@ Component({
       highlightToday: true,
       disablePastDay: true
     },
-    ifShowCalender: 'hiddenCalender',
+    ifShowCalendar: 'hiddenCalendar',
     ifShowTimeSelector: 'hiddenTimeSelector',
     ifInput: false,
     hours: hours,
@@ -38,19 +38,19 @@ Component({
   },
 
   methods: {
-    ifShowCalender() {
+    ifShowCalendar() {
       if (this.data.ifShowTimeSelector !== 'showTimeSelector') {
-        let ifShowCalender = this.data.ifShowCalender == 'showCalender' ? 'hiddenCalender' : 'showCalender',
+        let ifShowCalendar = this.data.ifShowCalendar == 'showCalendar' ? 'hiddenCalendar' : 'showCalendar',
           ifInput = !this.data.ifInput
         this.setData({
-          ifShowCalender: ifShowCalender,
+          ifShowCalendar: ifShowCalendar,
           ifInput: ifInput
         })
       }
     },
 
     ifShowTimeSelector() {
-      if (this.data.ifShowCalender !== 'showCalender') {
+      if (this.data.ifShowCalendar !== 'showCalendar') {
         let ifShowTimeSelector = this.data.ifShowTimeSelector == 'showTimeSelector' ? 'hiddenTimeSelector' : 'showTimeSelector',
           ifInput = !this.data.ifInput
         this.setData({
@@ -69,7 +69,7 @@ Component({
       this.setData({
         date: date
       })
-      this.ifShowCalender()
+      this.ifShowCalendar()
       this.triggerEvent('changeDate', tranObj)
     },
 
@@ -109,7 +109,7 @@ Component({
       this.setData({
         time: time
       })
-      this.ifShowCalender()
+      this.ifShowCalendar()
       let tranObj = {
         time: this.data.time,
         ifInput: this.data.ifInput
