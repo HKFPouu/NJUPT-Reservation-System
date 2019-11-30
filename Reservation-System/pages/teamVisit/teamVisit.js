@@ -4,7 +4,15 @@ Page({
   data: {
     today: '',
     ifInput: false,
-    teamFormScene: ['通信展览馆', '校史展览馆'],
+    teamFormScene: [{
+        name: '通信展览馆',
+        checked: ''
+      },
+      {
+        name: '校史展览馆',
+        checked: ''
+      }
+    ],
     alumni: [{
         name: '',
         value: '否',
@@ -20,19 +28,28 @@ Page({
       accompanyLeader: '',
       contactMan: '',
       contactPhone: '',
-      place: [],
+      place: [{
+          name: '通信展览馆',
+          checked: ''
+        },
+        {
+          name: '校史展览馆',
+          checked: ''
+        }
+      ],
       date: '',
       time: '',
       gust: '',
       UnitPosition: '',
       peopleNumber: 1,
       ifAlumni: false,
-      welcomeMessage: ''
+      welcomeMessage: '',
+      status: false
     }
   },
 
   onShow() {
-    let today = new Date().toLocaleDateString().replace(/\\/g,"-");
+    let today = new Date().toLocaleDateString().replace(/\\/g, "-");
     this.setData({
       today: today
     })
@@ -75,8 +92,15 @@ Page({
   },
 
   changeScene(child) {
-    let form = this.data.form;
-    form.place = [...child.detail]
+    let form = this.data.form
+    form.place[0].checked = ''
+    form.place[1].checked = ''
+    for (let item of child.detail) {
+      if (item == '通信展览馆')
+        form.place[0].checked = 'true'
+      if (item == '校史展览馆')
+        form.place[1].checked = 'true'
+    }
     this.setData({
       form: form
     })

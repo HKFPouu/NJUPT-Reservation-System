@@ -1,37 +1,62 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-
-
-    // 登录
+    const that = this;
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        }
+        wx.request({
+          url: `http://139.9.140.149:8080/wLogin?code=${res.code}`,
+          method: 'post',
+          success: function (res) {
+            console.log(res,res.data.data.roleId)
+            that.setData({
+              role:res.data.data.roleId
+            })
+          }
+        })
       }
     })
   },
   globalData: {
-    userInfo: null
+    applyList: {
+      1:{
+      contactUnit: '联系单位',
+      accompanyLeader: '陪同领导',
+      contactMan: '联系人',
+      contactPhone: '123123123',
+      place: [
+        {
+          name: '通信展览馆',
+          checked: 'false'
+        },
+        {
+          name: '校史展览馆',
+          checked: 'true'
+        }
+      ],
+      date: '2019-11-29',
+      time: '15:30',
+      gust: '来宾',
+      UnitPosition: '单位职务',
+      peopleNumber: 1,
+      ifAlumni: false,
+      welcomeMessage: '欢迎来',
+      status: false
+    }, 
+    2:{
+      contactUnit: '联系单位',
+      accompanyLeader: '陪同领导',
+      contactMan: '联系人',
+      contactPhone: '123123123',
+      place: [],
+      date: '2019-11-29',
+      time: '15:30',
+      gust: '来宾',
+      UnitPosition: '单位职务',
+      peopleNumber: 1,
+      ifAlumni: false,
+      welcomeMessage: '欢迎来',
+      status: false
+    }}
   }
 })

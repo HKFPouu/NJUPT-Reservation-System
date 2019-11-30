@@ -1,0 +1,19 @@
+<view class="teamVisit-specificInformation">
+  <view class="teamVisit-specificInformationBox">
+    <view class="flex">
+      <view class="teamVisit-specificInformation-label">
+        <text class="Label" decode="{{true}}" wx:for-items="{{labelList}}" wx:for-index="key" wx:for-item="label">{{label}}：</text>
+      </view>
+      <view class="teamVisit-specificInformation-input">
+        <input type="text" disabled="true" value="{{value}}" wx:for-items="{{information}}" wx:for-index="key" wx:for-item="value" class="label-value-input" />
+      </view>
+    </view>
+    <view class="teamVisit-specificInformation-scene" >
+      <scene placeArr="{{place}}" ifdisabled="{{true}}"/>
+    </view>
+  </view>
+  <button class="teamVisit-specificInformation-button" bindtap = "changeStatus">{{changeStatusText}}</button>
+  <view class="footer" hover-class="none" hover-stop-propagation="false">
+    <text>@2019 NJUPT</text>
+  </view>
+</view>

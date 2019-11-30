@@ -1,0 +1,55 @@
+@import "../../app.wxss";
+
+.label-value-input {
+  border: 1px solid #ddd;
+  padding-left: 8rpx;
+  z-index: 1;
+  color: #757575;
+}
+
+.teamVisit-specificInformation-label,
+.teamVisit-specificInformation-input {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  height: 90vh;
+  text-align: center;
+}
+
+.teamVisit-specificInformation {
+  background: #f5f5f5;
+}
+
+.teamVisit-specificInformationBox,.footer {
+  width: 86%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+.teamVisit-specificInformation-scene {
+  padding-left: 22rpx;
+}
+
+.teamVisit-specificInformation-button {
+  border: 1px solid #ddd;
+  background: #fffffF;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 20rpx;
+}
+
+.teamVisit-specificInformation-button,
+.footer {
+  margin-top: 3vh;
+}
+
+.footer{
+  vertical-align: middle;
+  text-align: center;
+  color: #757575;
+  background: #ffffff;
+  font-size: 30rpx;
+}

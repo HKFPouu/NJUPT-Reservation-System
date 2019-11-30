@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "label":"../../components/labelValue/labelValue"
+  },
+  "navigationBarTitleText": "团体参观申请列表"
+}

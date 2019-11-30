@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/teamVisit/teamVisit",
-    "pages/cognitiveLearning/cognitiveLearning"
+    "pages/cognitiveLearning/cognitiveLearning",
+    "pages/teamVisit-specificInformation/teamVisit-specificInformation",
+    "pages/administrator-teamVisit/administrator-teamVisit"
   ],
   "window": {
     "backgroundTextStyle": "light",

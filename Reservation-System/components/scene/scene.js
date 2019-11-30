@@ -1,6 +1,7 @@
 Component({
   properties: {
-    'placeArr': Array
+    'placeArr': Array,
+    'ifdisabled':Boolean
   },
   methods: {
     checkboxChange: function (e) {

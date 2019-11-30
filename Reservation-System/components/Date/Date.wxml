@@ -1,8 +1,8 @@
-<view class="calendar {{ifShowCalander}}">
+<view class="calendar {{ifShowCalendar}}">
   <calendar calendarConfig="{{calendarConfig}}" bind:afterTapDay="afterTapDay" id="calendar"></calendar>
-  <image src="../../static/close.png" bindtap="ifShowCalander" class="calendar-image"/>
+  <image src="../../static/close.png" bindtap="ifShowCalendar" class="calendar-image"/>
 </view>
-<view class="label-value flex" bindtap="ifShowCalander">
+<view class="label-value flex" bindtap="ifShowCalendar">
   <text class="Label">参观日期：</text>
   <input type="text" auto-focus placeholder="{{today}}" disabled="{{true}}" value="{{date}}" class="label-value-input"/>
   <image src="../../static/calendar.png" alt=""  class="label-value-image"/>

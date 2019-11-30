@@ -2,18 +2,35 @@ const app = getApp()
 
 Page({
   data: {
-    cognitiveLearningScene: ['通信展览馆', '校史陈列馆'],
+    cognitiveLearningScene: [{
+        name: '通信展览馆',
+        checked: ''
+      },
+      {
+        name: '校史陈列馆',
+        checked: ''
+      }
+    ],
     today: '',
     ifInput: false,
     form: {
       contactMan: '',
       contactUnit: '',
       contactPhone: '',
-      place: [],
+      place: [{
+          name: '通信展览馆',
+          checked: ''
+        },
+        {
+          name: '校史陈列馆',
+          checked: ''
+        }
+      ],
       date: '',
       time: '',
       major: '',
-      class: ''
+      class: '',
+      status: false
     }
   },
 
@@ -60,8 +77,15 @@ Page({
   },
 
   changeScene(child) {
-    let form = this.data.form;
-    form.place = [...child.detail]
+    let form = this.data.form
+    form.place[0].checked = ''
+    form.place[1].checked = ''
+    for (let item of child.detail) {
+      if (item == '通信展览馆')
+        form.place[0].checked = 'true'
+      if (item == '校史陈列馆')
+        form.place[1].checked = 'true'
+    }
     this.setData({
       form: form
     })
@@ -137,5 +161,5 @@ Page({
       }
     });
   }
-  
+
 })

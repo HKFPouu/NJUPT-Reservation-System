@@ -48,6 +48,7 @@
   height: 50rpx;
   bottom: 2%;
   right: 47%;
+  z-index: 3;
 }
 
 .time-image {
