@@ -4,7 +4,8 @@
     "labelValue": "../../components/labelValue/labelValue",
     "scene": "../../components/scene/scene",
     "contact": "../../components/contact/contact",
-    "Date": "../../components/Date/Date"
+    "Date": "../../components/Date/Date",
+    "login":"../../components/login/login"
   },
   "navigationBarTitleText": "团队参观"
 }

@@ -29,10 +29,6 @@
   background: #ffffff;
 }
 
-.teamVisit-specificInformation-scene {
-  padding-left: 22rpx;
-}
-
 .teamVisit-specificInformation-button {
   border: 1px solid #ddd;
   background: #fffffF;

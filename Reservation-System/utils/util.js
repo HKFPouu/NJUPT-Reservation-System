@@ -1,19 +1,51 @@
-// const formatTime = date => {
-//   const year = date.getFullYear()
-//   const month = date.getMonth() + 1
-//   const day = date.getDate()
-//   const hour = date.getHours()
-//   const minute = date.getMinutes()
-//   const second = date.getSeconds()
+module.exports = {
+  submit: submit
+}
 
-//   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-// }
+function submit(form, listId) {
+  const app = getApp()
+  const userId = app.globalData.userId.toString();
+  const listUrl = listId == 1 ? 'teamVisit' : 'learnVisit'
+  wx.checkSession({
+    success(res) {
+      submitRequest(form,listUrl,userId)
+    },
+    fail(res){
+      wx.login({
+        success(res) {
+          wx.request({
+            url: `http://139.9.140.149:8080/wLogin?code=${res.code}`,
+            method: 'post',
+            success(res) {
+              app.globalData.role = res.data.data.roleId
+              app.globalData.userId = res.data.data.userId
+              submitRequest(form)
+            }
+          })
+        }
+      })
+    }
+  })
+}
 
-// const formatNumber = n => {
-//   n = n.toString()
-//   return n[1] ? n : '0' + n
-// }
+function submitRequest(form,listUrl,userId) {
+  let sendJson = JSON.stringify(form)
 
-// module.exports = {
-//   formatTime: formatTime
-// }
+  wx.getUserInfo({
+    success(res) {
+      wx.request({
+        url: `http://139.9.140.149:8080/sub/${listUrl}`,
+        method: 'post',
+        data: {
+          rawDate: res.rawData,
+          user_id: userId,
+          signature: res.signature,
+          information: sendJson
+        },
+        success(res) {
+          console.log(res)
+        }
+      })
+    }
+  })
+}

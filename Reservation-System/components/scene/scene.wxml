@@ -2,8 +2,8 @@
   <text class="Label">参观场所：</text>
   <checkbox-group bindchange="checkboxChange" class="sceneCheckBox">
     <label class="checkbox" wx:for="{{placeArr}}" wx:key="index">
-      <checkbox value="{{item.name}}" checked="{{item.checked}}" disabled="{{ifdisabled}}"/>
-      {{item.name}}
+      <checkbox value="{{item}}" checked="{{item.checked}}" disabled="{{ifdisabled}}"/>
+      {{item}}
     </label>
   </checkbox-group>
 </view>

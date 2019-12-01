@@ -1,22 +1,15 @@
 const app = getApp();
+const util = require("../../utils/util");
 
 Page({
   data: {
     today: '',
     ifInput: false,
-    teamFormScene: [{
-        name: '通信展览馆',
-        checked: ''
-      },
-      {
-        name: '校史展览馆',
-        checked: ''
-      }
-    ],
+    ifSubmit: true,
+    teamFormScene: ['通信展览馆', '校史展览馆'],
     alumni: [{
         name: '',
-        value: '否',
-        checked: 'true'
+        value: '否'
       },
       {
         name: 'true',
@@ -28,23 +21,16 @@ Page({
       accompanyLeader: '',
       contactMan: '',
       contactPhone: '',
-      place: [{
-          name: '通信展览馆',
-          checked: ''
-        },
-        {
-          name: '校史展览馆',
-          checked: ''
-        }
-      ],
-      date: '',
-      time: '',
+      place: '',
+      date: '2019-11-20',
+      time: '15:30',
       gust: '',
       UnitPosition: '',
       peopleNumber: 1,
       ifAlumni: false,
+      pricpleSign: '',
+      status: 0,
       welcomeMessage: '',
-      status: false
     }
   },
 
@@ -93,14 +79,15 @@ Page({
 
   changeScene(child) {
     let form = this.data.form
-    form.place[0].checked = ''
-    form.place[1].checked = ''
-    for (let item of child.detail) {
-      if (item == '通信展览馆')
-        form.place[0].checked = 'true'
-      if (item == '校史展览馆')
-        form.place[1].checked = 'true'
-    }
+    form.place = child.detail.join(',')
+    this.setData({
+      form: form
+    })
+  },
+
+  changeTeamSign(e) {
+    let form = this.data.form;
+    form.pricpleSign = e.detail.value
     this.setData({
       form: form
     })
@@ -130,6 +117,8 @@ Page({
       case 'welcomeMessage':
         form.welcomeMessage = child.detail.value
         break;
+      default:
+        break;
     }
     this.setData({
       form: form
@@ -137,8 +126,28 @@ Page({
   },
 
   submit() {
-    let sendJson = JSON.parse(JSON.stringify(this.data.form))
-    console.log(sendJson)
-  }
+    let result = true
+    for (let key in this.data.form) {
+      if (this.data.form[key] === '' || this.data.form[key] === null) {
+        result = false;
+        this.setData({
+          ifSubmit: false
+        })
+        break;
+      }
+    }
+    if (result)
+      util.submit(this.data.form, 1)
 
+  },
+
+  onReady() {
+    this.loginComponent = this.selectComponent("#login");
+  },
+
+  confirmEvent() {
+    this.setData({
+      ifSubmit: true
+    })
+  }
 })

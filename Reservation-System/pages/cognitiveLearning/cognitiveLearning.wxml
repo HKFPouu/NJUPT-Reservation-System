@@ -1,4 +1,12 @@
 <view class="cognitiveLearning">
+  <view hidden="{{ifSubmit}}">
+    <login id='login' 
+      title='提交提示' 
+      content='还有没有填写的表单数据哦' 
+      confirmText='知道了' 
+      bind:confirmEvent='confirmEvent'> 
+    </login>
+  </view>
   <view class="cognitiveLearningForm">
     <Date bind:changeDate="changeDate" bind:changeTime="changeTime" today="{{today}}" />
     <labelValue label="联&ensp;系&ensp;人" name="contactMan" bind:changeStatus="changeStatus" />
@@ -16,7 +24,7 @@
   </view>
   <view class="cognitiveLearningSignature flex">
     <text>联系单位负责人签章：</text>
-    <input type="text" />
+    <input type="text" bindblur="changeTeamSign" />
   </view>
   <view class="cognitiveLearningDownload flex">
     <image class="" src="../../static/download.png" bindtap="download" />

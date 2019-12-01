@@ -5,7 +5,7 @@ Component({
   properties: {
     title: {
       type: String,
-      value: '标题' 
+      value: '标题'
     },
     content: {
       type: String,

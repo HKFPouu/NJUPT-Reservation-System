@@ -8,11 +8,8 @@
         <input type="text" disabled="true" value="{{value}}" wx:for-items="{{information}}" wx:for-index="key" wx:for-item="value" class="label-value-input" />
       </view>
     </view>
-    <view class="teamVisit-specificInformation-scene" >
-      <scene placeArr="{{place}}" ifdisabled="{{true}}"/>
-    </view>
   </view>
-  <button class="teamVisit-specificInformation-button" bindtap = "changeStatus">{{changeStatusText}}</button>
+  <button class="teamVisit-specificInformation-button" bindtap = "bindChangeStatus">{{changeStatusText}}</button>
   <view class="footer" hover-class="none" hover-stop-propagation="false">
     <text>@2019 NJUPT</text>
   </view>

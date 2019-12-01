@@ -1,10 +1,9 @@
 <view class="container">
   <login id='login' 
-  title='登录提示' 
-  content='小程序需要您的授权才能提供更好的服务哦' 
-  confirmText='知道了' 
-  bind:confirmEvent='confirmEvent' 
-  bind:bindGetUserInfo='bindGetUserInfo'> 
+    title='登录提示' 
+    content='小程序需要您的授权才能提供更好的服务哦' 
+    confirmText='知道了' 
+    bind:confirmEvent='confirmEvent'> 
   </login>
   <view class="identify-words">
     <text class="full-name">南邮校史展览馆、校史陈列馆</text>
@@ -17,7 +16,7 @@
     <text class="entrance">团队参观</text>
     <text class="introduction">通信展览馆 校史展览馆 —— 团体参观</text>
   </view>
-  <view class="cognitive-learning" bindtap = "bindEntranceTap" data-alphaBeta="2">
+  <view class="cognitive-learning" bindtap = "bindEntranceTap" data-alpha-beta="2">
     <text class="entrance">认知学习</text>
     <text class="introduction">通信展览馆 校史陈列馆 —— 学生认知实习参观</text>
   </view>

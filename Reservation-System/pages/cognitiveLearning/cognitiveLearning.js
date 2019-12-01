@@ -1,36 +1,23 @@
-const app = getApp()
+const app = getApp();
+const util = require("../../utils/util");
 
 Page({
   data: {
-    cognitiveLearningScene: [{
-        name: '通信展览馆',
-        checked: ''
-      },
-      {
-        name: '校史陈列馆',
-        checked: ''
-      }
-    ],
+    cognitiveLearningScene: ['通信展览馆','校史陈列馆'],
     today: '',
     ifInput: false,
+    ifSubmit: true,
     form: {
-      contactMan: '',
-      contactUnit: '',
-      contactPhone: '',
-      place: [{
-          name: '通信展览馆',
-          checked: ''
-        },
-        {
-          name: '校史陈列馆',
-          checked: ''
-        }
-      ],
-      date: '',
-      time: '',
-      major: '',
-      class: '',
-      status: false
+      contactMan: '1',
+      contactUnit: '1',
+      contactPhone: '1',
+      place:'通信展览馆 ,校史陈列馆',
+      date: '2010-11-19',
+      time: '8:30',
+      major: '1',
+      class: '1',
+      status: 0,
+      pricpleSign: '1'
     }
   },
 
@@ -76,16 +63,17 @@ Page({
     })
   },
 
+  changeTeamSign(e) {
+    let form = this.data.form;
+    form.pricpleSign = e.detail.value
+    this.setData({
+      form: form
+    })
+  },
+
   changeScene(child) {
     let form = this.data.form
-    form.place[0].checked = ''
-    form.place[1].checked = ''
-    for (let item of child.detail) {
-      if (item == '通信展览馆')
-        form.place[0].checked = 'true'
-      if (item == '校史陈列馆')
-        form.place[1].checked = 'true'
-    }
+    form.place = child.detail.join(',')
     this.setData({
       form: form
     })
@@ -112,54 +100,32 @@ Page({
   },
 
   submit() {
-    let sendJson = JSON.parse(JSON.stringify(this.data.form))
-    console.log(sendJson)
+    let result = true
+    for (let key in this.data.form) {
+      if (this.data.form[key] === '' || this.data.form[key] === null) {
+        result = false;
+        this.setData({
+          ifSubmit: false
+        })
+        break;
+      }
+    }
+    if (result)
+      util.submit(this.data.form, 2)
+
   },
 
-  save: function () {
-    wx.downloadFile({
-      url: "",
-      success(res) {
-        console.log(res)
-        var savePath = wx.env.USER_DATA_PATH + "/校内经费转账.docx.jpg"
-        wx.getFileSystemManager()
-          .saveFile({
-            tempFilePath: res.tempFilePath,
-            filePath: savePath,
-            success(res2) {
-              wx.saveImageToPhotosAlbum({
-                filePath: savePath,
-                success: (res) => {
-                  wx.showModal({
-                    title: '文件已保存到手机相册',
-                    content: '位于tencent/MicroMsg/WeiXin下 \r\n将保存的文件重命名改为[ .docx ]后缀即可',
-                    confirmColor: '#0bc183',
-                    confirmText: '知道了',
-                    showCancel: false
-                  })
-                }
-              })
-            }
-          })
-      }
+  onReady() {
+    this.loginComponent = this.selectComponent("#login");
+  },
+
+  confirmEvent() {
+    this.setData({
+      ifSubmit: true
     })
   },
 
   download() {
-    wx.getSetting({
-      success: (res) => {
-        if (!res.authSetting['scope.writePhotosAlbum']) {
-          wx.authorize({
-            scope: 'scope.writePhotosAlbum',
-            success: (res) => {
-              this.save()
-            }
-          })
-        } else {
-          this.save()
-        }
-      }
-    });
   }
 
 })

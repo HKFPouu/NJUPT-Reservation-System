@@ -1,4 +1,12 @@
 <view class="team">
+<view hidden="{{ifSubmit}}">
+    <login id='login' 
+  title='提交提示' 
+  content='还有没有填写的表单数据哦' 
+  confirmText='知道了' 
+  bind:confirmEvent='confirmEvent'> 
+  </login>
+</view>
   <view class="teamForm">
     <Date 
       bind:changeDate="changeDate"
@@ -74,7 +82,7 @@
   </view>
   <view class="teamSignature flex">
     <text>联系单位负责人签章：</text>
-    <input type="text" />
+    <input type="text" bindblur="changeTeamSign"/>
   </view>
   <button class="teamSubmit" bindtap="submit">提交申请</button>
   <view class="contact">
