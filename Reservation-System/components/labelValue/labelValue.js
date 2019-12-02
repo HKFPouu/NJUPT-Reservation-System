@@ -2,7 +2,8 @@ Component({
   properties: {
     'label': String,
     'name': String,
-    'ifInput': Boolean
+    'ifInput': Boolean,
+    'type': String
   },
   methods: {
     changeStatus: function (e) {
@@ -10,7 +11,7 @@ Component({
         name: e.target.id,
         value: e.detail.value
       }
-      this.triggerEvent('changeStatus',tranObj)
+      this.triggerEvent('changeStatus', tranObj)
     }
   }
 })

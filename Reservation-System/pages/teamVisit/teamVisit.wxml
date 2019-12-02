@@ -1,64 +1,25 @@
-<view class="team">
-<view hidden="{{ifSubmit}}">
-    <login id='login' 
-  title='提交提示' 
-  content='还有没有填写的表单数据哦' 
-  confirmText='知道了' 
-  bind:confirmEvent='confirmEvent'> 
-  </login>
-</view>
+<form class="team" report-submit='true' bindsubmit="submit">
+  <view hidden="{{ifSubmit}}">
+    <login id='login' title='提交提示' content='还有没有填写的表单数据哦' confirmText='知道了' bind:confirmEvent='confirmEvent'></login>
+  </view>
+  <view hidden="{{!ifSuccessSubmit}}">
+    <login id='login' title='提交提示' content='提交成功' confirmText='知道了' bind:confirmEvent='confirmEvent'></login>
+  </view>
   <view class="teamForm">
-    <Date 
-      bind:changeDate="changeDate"
-      bind:changeTime="changeTime"
-      today="{{today}}"
-      />
-    <labelValue 
-      label="联系单位" 
-      name="contactUnit" 
-      bind:changeStatus="changeStatus"
-      ifInput="{{ifInput}}"
-    />
-    <labelValue 
-      label="陪同领导" 
-      name="accompanyLeader" 
-      bind:changeStatus="changeStatus"
-      ifInput="{{ifInput}}"
-    />
-    <labelValue 
-      label="联&ensp;系&ensp;人" 
-      name="contactMan"
-      bind:changeStatus="changeStatus"
-      ifInput="{{ifInput}}"
-    />
-    <labelValue 
-      label="联系电话" 
-      name="contactPhone"
-      bind:changeStatus="changeStatus"
-      ifInput="{{ifInput}}"
-      />
-    <scene 
-    placeArr="{{teamFormScene}}" 
-    bind:changeScene="changeScene"
-    />
+    <Date bind:changeDate="changeDate" bind:changeTime="changeTime" today="{{today}}" />
+    <labelValue label="联系单位" name="contactUnit" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
+    <labelValue label="陪同领导" name="accompanyLeader" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
+    <labelValue label="联&ensp;系&ensp;人" name="contactMan" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
+    <labelValue label="联系电话" name="contactPhone" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="number" />
+    <scene placeArr="{{teamFormScene}}" bind:changeScene="changeScene" />
   </view>
   <view class="teamGuest">
     <view class="teamGuestText">
       <text>嘉宾信息</text>
     </view>
-    <labelValue 
-      label="来&emsp;&emsp;宾" 
-      name="gust" 
-      bind:changeStatus="changeStatus"
-      ifInput="{{ifInput}}"
-    />
-    <labelValue 
-      label="单位职务" 
-      name="UnitPosition" 
-      bind:changeStatus="changeStatus"
-      ifInput="{{ifInput}}"
-    />
-    <stepper bind:changeNum="changeNum"/>
+    <labelValue label="来&emsp;&emsp;宾" name="gust" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
+    <labelValue label="单位职务" name="UnitPosition" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
+    <stepper bind:changeNum="changeNum" />
     <view class="alumni flex">
       <label class="Label">是否校友：</label>
       <radio-group class="radio-group" bindchange="radioChange" class="alumnCheckBox flex">
@@ -68,12 +29,7 @@
       </radio-group>
     </view>
     <view class="welcome">
-      <labelValue 
-        label="欢&ensp;迎&ensp;语" 
-        name="welcomeMessage" 
-        bind:changeStatus="changeStatus"
-        ifInput="{{ifInput}}"
-      />
+      <labelValue label="欢&ensp;迎&ensp;语" name="welcomeMessage" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
       <view class="welcomeDemo">
         <label>欢迎语将在通信展览馆门口液晶屏上显示。</label>
         <label>例如：欢迎XX参观通信展览馆</label>
@@ -82,10 +38,10 @@
   </view>
   <view class="teamSignature flex">
     <text>联系单位负责人签章：</text>
-    <input type="text" bindblur="changeTeamSign"/>
+    <input type="text" bindblur="changeTeamSign" />
   </view>
-  <button class="teamSubmit" bindtap="submit">提交申请</button>
+  <button class="teamSubmit" form-type="submit">提交申请</button>
   <view class="contact">
     <contact />
   </view>
-</view>
+</form>

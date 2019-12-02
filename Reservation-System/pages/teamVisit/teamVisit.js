@@ -6,6 +6,7 @@ Page({
     today: '',
     ifInput: false,
     ifSubmit: true,
+    ifSuccessSubmit: false,
     teamFormScene: ['通信展览馆', '校史展览馆'],
     alumni: [{
         name: '',
@@ -17,20 +18,21 @@ Page({
       }
     ],
     form: {
-      contactUnit: '',
-      accompanyLeader: '',
-      contactMan: '',
-      contactPhone: '',
-      place: '',
+      contactUnit: '测试',
+      accompanyLeader: '测试',
+      contactMan: '测试',
+      contactPhone: '123',
+      place: '测试',
       date: '2019-11-20',
       time: '15:30',
-      gust: '',
-      UnitPosition: '',
+      gust: '测试',
+      UnitPosition: '测试',
       peopleNumber: 1,
       ifAlumni: false,
       pricpleSign: '',
+      form_id: '0',
       status: 0,
-      welcomeMessage: '',
+      welcomeMessage: '测试',
     }
   },
 
@@ -125,10 +127,11 @@ Page({
     })
   },
 
-  submit() {
+  submit(e) {
     let result = true
     for (let key in this.data.form) {
       if (this.data.form[key] === '' || this.data.form[key] === null) {
+        console.log(key)
         result = false;
         this.setData({
           ifSubmit: false
@@ -136,8 +139,19 @@ Page({
         break;
       }
     }
-    if (result)
-      util.submit(this.data.form, 1)
+    if (result) {
+      let form = this.data.form
+      form.form_id = e.detail.formId
+      this.setData({
+        form: form
+      })
+      if (util.submit(this.data.form, 1, this.data.ifSuccessSubmit)) {
+        this.setData({
+          ifSuccessSubmit: true
+        })
+      }
+
+    }
 
   },
 

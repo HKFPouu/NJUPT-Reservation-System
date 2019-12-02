@@ -25,10 +25,11 @@ Page({
     })
   },
   specificInformation(e) {
-
-    let index = e.currentTarget.id.replace(/item/, '')
+    let idList = e.currentTarget.id.split('item')
+    let index = idList[0],
+      formId = idList[1]
     wx.navigateTo({
-      url: `../specificInformation/specificInformation?pageId=${this.data.pageId}&id=${index}`
+      url: `../specificInformation/specificInformation?pageId=${this.data.pageId}&id=${index}&formId=${formId}`
     })
   }
 })

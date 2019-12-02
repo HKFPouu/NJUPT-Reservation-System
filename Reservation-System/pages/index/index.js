@@ -14,7 +14,7 @@ Page({
       pageId: pageId
     })
 
-    if (this.data.role == 1) {
+    if (this.data.role == 0) {
       let page = this.data.pageId == 1 ? 'teamVisit' : 'cognitiveLearning'
       wx.navigateTo({
         url: `../${page}/${page}`
@@ -30,7 +30,7 @@ Page({
           wx.login({
             success(res) {
               wx.request({
-                url: `http://139.9.140.149:8080/wLogin?code=${res.code}`,
+                url: `http://139.9.140.149:8088/wLogin?code=${res.code}`,
                 method: 'post',
                 success(res) {
                   app.globalData.role = res.data.data.roleId
@@ -50,7 +50,7 @@ Page({
     wx.getUserInfo({
       success(res) {
         wx.request({
-          url: `http://139.9.140.149:8080/get/${listUrl}`,
+          url: `http://139.9.140.149:8088/get/${listUrl}`,
           method: 'post',
           data: {
             rawDate: res.rawData,

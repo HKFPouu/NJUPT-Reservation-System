@@ -3,7 +3,7 @@ const util = require("../../utils/util");
 
 Page({
   data: {
-    cognitiveLearningScene: ['通信展览馆','校史陈列馆'],
+    cognitiveLearningScene: ['通信展览馆', '校史陈列馆'],
     today: '',
     ifInput: false,
     ifSubmit: true,
@@ -11,7 +11,7 @@ Page({
       contactMan: '1',
       contactUnit: '1',
       contactPhone: '1',
-      place:'通信展览馆 ,校史陈列馆',
+      place: '通信展览馆 ,校史陈列馆',
       date: '2010-11-19',
       time: '8:30',
       major: '1',
@@ -110,9 +110,14 @@ Page({
         break;
       }
     }
-    if (result)
+    if (result) {
+      let form = this.data.form
+      form.formId = e.detail.formId
+      this.setData({
+        form: form
+      })
       util.submit(this.data.form, 2)
-
+    }
   },
 
   onReady() {
@@ -125,7 +130,6 @@ Page({
     })
   },
 
-  download() {
-  }
+  download() {}
 
 })

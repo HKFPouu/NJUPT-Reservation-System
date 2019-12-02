@@ -4,8 +4,9 @@ const cognitiveLearningLabel = ['联&ensp;系&ensp;人', '联系单位', '联系
 
 Page({
   data: {
-    pageId: 0,
-    id: 0,
+    pageId: null,
+    formId: null,
+    id: null,
     labelList: [],
     information: {},
     list: [],
@@ -18,18 +19,20 @@ Page({
 
     let pageId = option.pageId,
       id = option.id,
+      formId = option.formId,
       labelList = pageId == 1 ? teamVisitLabel : cognitiveLearningLabel,
       list = pageId == 1 ? teamVisitList : cognitiveLearningList
 
     this.setData({
       id: id,
+      form_id: formId,
       pageId: pageId,
       labelList: labelList,
       list: list
     })
 
     let information = JSON.parse(JSON.stringify(this.data.list[id])),
-      changeStatusText = information.status == 1 ?'取消申请': '确认申请'
+      changeStatusText = information.status == 1 ? '取消申请' : '确认申请'
     information.ifAlumni = information.ifAlumni ? '是' : '否'
     delete information.status
     if (this.data.pageId == 2)
@@ -43,15 +46,16 @@ Page({
     })
   },
 
-  changeStatusRequest(id, status, listUrl) {
+  changeStatusRequest(id, status, listUrl, formId) {
     const userId = app.globalData.userId.toString();
     wx.getUserInfo({
       success(res) {
         wx.request({
-          url: `http://139.9.140.149:8080/manage/${listUrl}`,
+          url: `http://139.9.140.149:8088/manage/${listUrl}`,
           data: {
             rawDate: res.rawData,
             user_id: userId,
+            form_id: formId,
             signature: res.signature,
             formId: id,
             status: status
@@ -69,22 +73,23 @@ Page({
     let teamVisitList = app.globalData.teamVisitList;
     const that = this
     const id = Number(that.data.id)
+    const formId = that.data.formId
     const status = teamVisitList[that.data.id].status
     const listUrl = page == 1 ? 'updateTeam' : 'updateLearn'
     wx.checkSession({
       success(res) {
-        that.changeStatusRequest(id, status, listUrl)
+        that.changeStatusRequest(id, status, listUrl, formId)
       },
       fail(res) {
         wx.login({
           success(res) {
             wx.request({
-              url: `http://139.9.140.149:8080/wLogin?code=${res.code}`,
+              url: `http://139.9.140.149:8088/wLogin?code=${res.code}`,
               method: 'post',
               success(res) {
                 app.globalData.role = res.data.data.roleId
                 app.globalData.userId = res.data.data.userId
-                that.changeStatusRequest(id, status, listUrl)
+                that.changeStatusRequest(id, status, listUrl, formId)
               }
             })
           }
@@ -115,6 +120,6 @@ Page({
     this.setData({
       changeStatusText: changeStatusText
     })
-    
+
   }
 })

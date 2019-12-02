@@ -14,7 +14,7 @@ function submit(form, listId) {
       wx.login({
         success(res) {
           wx.request({
-            url: `http://139.9.140.149:8080/wLogin?code=${res.code}`,
+            url: `http://139.9.140.149:8088/wLogin?code=${res.code}`,
             method: 'post',
             success(res) {
               app.globalData.role = res.data.data.roleId
@@ -34,7 +34,7 @@ function submitRequest(form,listUrl,userId) {
   wx.getUserInfo({
     success(res) {
       wx.request({
-        url: `http://139.9.140.149:8080/sub/${listUrl}`,
+        url: `http://139.9.140.149:8088/sub/${listUrl}`,
         method: 'post',
         data: {
           rawDate: res.rawData,
@@ -44,6 +44,7 @@ function submitRequest(form,listUrl,userId) {
         },
         success(res) {
           console.log(res)
+          return true
         }
       })
     }

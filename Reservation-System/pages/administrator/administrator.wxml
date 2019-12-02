@@ -1,6 +1,6 @@
 <view class="administrator-teamVisit">
   <view class="administrator-teamVisit-listBox" wx:for-items="{{list}}" wx:for-index="key"  wx:for-item="item">
-    <view class="administrator-teamVisit-list flex" catchtap = "specificInformation" id="item{{key}}" >
+    <view class="administrator-teamVisit-list flex" catchtap = "specificInformation" id="{{key}}item{{item.form_id}}" >
       <text>{{item.date}}</text>
       <text>{{item.time}}</text>
       <text style="width:100rpx">{{item.contactMan}}</text>

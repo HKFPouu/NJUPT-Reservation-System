@@ -9,17 +9,17 @@
   </view>
   <view class="cognitiveLearningForm">
     <Date bind:changeDate="changeDate" bind:changeTime="changeTime" today="{{today}}" />
-    <labelValue label="联&ensp;系&ensp;人" name="contactMan" bind:changeStatus="changeStatus" />
-    <labelValue label="联系单位" name="contactUnit" bind:changeStatus="changeStatus" />
-    <labelValue label="电&emsp;&emsp;话" name="contactPhone" bind:changeStatus="changeStatus" />
-    <scene placeArr="{{cognitiveLearningScene}}" bind:changeScene="changeScene" />
+    <labelValue label="联&ensp;系&ensp;人" name="contactMan" bind:changeStatus="changeStatus" type="text"/>
+    <labelValue label="联系单位" name="contactUnit" bind:changeStatus="changeStatus" type="text"/>
+    <labelValue label="电&emsp;&emsp;话" name="contactPhone" bind:changeStatus="changeStatus" type="number"/>
+    <scene placeArr="{{cognitiveLearningScene}}" bind:changeScene="changeScene" type="text"/>
   </view>
   <view class="cognitiveLearningGuest">
     <view class="cognitiveLearningGuestText">
       <text>学生信息</text>
     </view>
-    <labelValue label="专&emsp;&emsp;业" name="major" bind:changeStatus="changeStatus" />
-    <labelValue label="班&emsp;&emsp;级" name="class" bind:changeStatus="changeStatus" />
+    <labelValue label="专&emsp;&emsp;业" name="major" bind:changeStatus="changeStatus" type="text"/>
+    <labelValue label="班&emsp;&emsp;级" name="class" bind:changeStatus="changeStatus" type="text"/>
     <stepper />
   </view>
   <view class="cognitiveLearningSignature flex">
