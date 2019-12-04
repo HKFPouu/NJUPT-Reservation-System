@@ -17,7 +17,7 @@ App({
     })
   },
   globalData: {
-    userId: null,
+    userId: '',
     getList: false,
     role: 0,
     teamVisitList: {},

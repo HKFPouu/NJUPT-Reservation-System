@@ -4,7 +4,7 @@ module.exports = {
 
 function submit(form, listId) {
   const app = getApp()
-  const userId = app.globalData.userId.toString();
+  const userId = app.globalData.userId;
   const listUrl = listId == 1 ? 'teamVisit' : 'learnVisit'
   wx.checkSession({
     success(res) {

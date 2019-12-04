@@ -47,7 +47,7 @@ Page({
   },
 
   changeStatusRequest(id, status, listUrl, formId) {
-    const userId = app.globalData.userId.toString();
+    const userId = app.globalData.userId;
     wx.getUserInfo({
       success(res) {
         wx.request({
