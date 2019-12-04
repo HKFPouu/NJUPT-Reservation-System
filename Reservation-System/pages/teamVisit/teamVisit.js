@@ -30,7 +30,6 @@ Page({
       peopleNumber: 1,
       ifAlumni: false,
       pricpleSign: '',
-      form_id: '0',
       status: 0,
       welcomeMessage: '测试',
     }
@@ -127,7 +126,7 @@ Page({
     })
   },
 
-  submit(e) {
+  submit() {
     let result = true
     for (let key in this.data.form) {
       if (this.data.form[key] === '' || this.data.form[key] === null) {
@@ -140,13 +139,6 @@ Page({
       }
     }
     if (result) {
-      let form = this.data.form
-      form.form_id = e.detail.formId
-      console.log(form.form_id)
-      this.setData({
-        form: form
-      })
-
       util.submit(this.data.form, 1)
       this.setData({
         ifSuccessSubmit: true
@@ -160,24 +152,14 @@ Page({
   },
 
   confirmEvent(e) {
-    let target = e.target.id.replace(/dialog /, '')
     this.dialogComponent.hideLogin()
-    if (target == 'successSubmit') {
-      this.setData({
-        ifSubmit: false
+    this.setData({
+      ifSuccessSubmit: false
+    })
+    if (e.target.id == 'successSubmit')
+      wx.navigateBack({
+        delta: 1
       })
-    } else {
-      this.setData({
-        ifSuccessSubmit: false
-      })
-    }
   },
 
-  // successSubmit() {
-
-  //   this.setData({
-  //     ifSuccessSubmit: false
-  //   })
-  //   console.log(this.data.ifSuccessSubmit)
-  // }
 })

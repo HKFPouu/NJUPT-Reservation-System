@@ -5,6 +5,7 @@ module.exports = {
 function submit(form, listId) {
   const app = getApp()
   const userId = app.globalData.userId;
+
   const listUrl = listId == 1 ? 'teamVisit' : 'learnVisit'
   wx.checkSession({
     success(res) {
@@ -19,7 +20,7 @@ function submit(form, listId) {
             success(res) {
               app.globalData.role = res.data.data.roleId
               app.globalData.userId = res.data.data.userId
-              submitRequest(form)
+              submitRequest(form,listUrl,userId)
             }
           })
         }

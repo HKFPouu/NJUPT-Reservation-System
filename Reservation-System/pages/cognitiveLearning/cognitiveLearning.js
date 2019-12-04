@@ -6,7 +6,8 @@ Page({
     cognitiveLearningScene: ['通信展览馆', '校史陈列馆'],
     today: '',
     ifInput: false,
-    ifSubmit: true,
+    ifSubmit: false,
+    ifSuccessSubmit: false,
     form: {
       contactMan: '1',
       contactUnit: '1',
@@ -16,6 +17,7 @@ Page({
       time: '8:30',
       major: '1',
       class: '1',
+      form_id: '0',
       status: 0,
       pricpleSign: '1'
     }
@@ -103,31 +105,42 @@ Page({
     let result = true
     for (let key in this.data.form) {
       if (this.data.form[key] === '' || this.data.form[key] === null) {
+        console.log(key)
         result = false;
         this.setData({
-          ifSubmit: false
+          ifSubmit: true
         })
         break;
       }
     }
     if (result) {
-      let form = this.data.form
-      form.formId = e.detail.formId
-      this.setData({
-        form: form
-      })
       util.submit(this.data.form, 2)
+      this.setData({
+        ifSuccessSubmit: true
+      })
     }
+
   },
 
   onReady() {
-    this.loginComponent = this.selectComponent("#login");
+    this.dialogComponent = this.selectComponent(".dialog");
   },
 
-  confirmEvent() {
-    this.setData({
-      ifSubmit: true
-    })
+  confirmEvent(e) {
+    let target = e.target.id.replace(/dialog /, '')
+    this.dialogComponent.hideLogin()
+    if (target == 'successSubmit') {
+      this.setData({
+        ifSubmit: false
+      })
+      wx.navigateTo({
+        url: '../index/index'
+      })
+    } else {
+      this.setData({
+        ifSuccessSubmit: false
+      })
+    }
   },
 
   download() {}

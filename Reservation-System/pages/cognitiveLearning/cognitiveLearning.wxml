@@ -1,25 +1,19 @@
-<view class="cognitiveLearning">
-  <view hidden="{{ifSubmit}}">
-    <login id='login' 
-      title='提交提示' 
-      content='还有没有填写的表单数据哦' 
-      confirmText='知道了' 
-      bind:confirmEvent='confirmEvent'> 
-    </login>
-  </view>
+<form class="cognitiveLearning" report-submit='true' bindsubmit="submit">
+  <login class='dialog empty' title='提交提示' content='还有没有填写的表单数据哦' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSubmit}}"></login>
+  <login class='dialog successSubmit' title='提交提示' content='提交成功' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSuccessSubmit}}"></login>
   <view class="cognitiveLearningForm">
     <Date bind:changeDate="changeDate" bind:changeTime="changeTime" today="{{today}}" />
-    <labelValue label="联&ensp;系&ensp;人" name="contactMan" bind:changeStatus="changeStatus" type="text"/>
-    <labelValue label="联系单位" name="contactUnit" bind:changeStatus="changeStatus" type="text"/>
-    <labelValue label="电&emsp;&emsp;话" name="contactPhone" bind:changeStatus="changeStatus" type="number"/>
-    <scene placeArr="{{cognitiveLearningScene}}" bind:changeScene="changeScene" type="text"/>
+    <labelValue label="联&ensp;系&ensp;人" name="contactMan" bind:changeStatus="changeStatus" type="text" />
+    <labelValue label="联系单位" name="contactUnit" bind:changeStatus="changeStatus" type="text" />
+    <labelValue label="电&emsp;&emsp;话" name="contactPhone" bind:changeStatus="changeStatus" type="number" />
+    <scene placeArr="{{cognitiveLearningScene}}" bind:changeScene="changeScene" type="text" />
   </view>
   <view class="cognitiveLearningGuest">
     <view class="cognitiveLearningGuestText">
       <text>学生信息</text>
     </view>
-    <labelValue label="专&emsp;&emsp;业" name="major" bind:changeStatus="changeStatus" type="text"/>
-    <labelValue label="班&emsp;&emsp;级" name="class" bind:changeStatus="changeStatus" type="text"/>
+    <labelValue label="专&emsp;&emsp;业" name="major" bind:changeStatus="changeStatus" type="text" />
+    <labelValue label="班&emsp;&emsp;级" name="class" bind:changeStatus="changeStatus" type="text" />
     <stepper />
   </view>
   <view class="cognitiveLearningSignature flex">
@@ -33,8 +27,8 @@
       <text>由部分领导签字后移交财务处</text>
     </view>
   </view>
-  <button class="cognitiveLearningSubmit" bindtap="submit">提交申请</button>
+  <button class="cognitiveLearningSubmit" form-type="submit">提交申请</button>
   <view class="contact">
     <contact />
   </view>
-</view>
+</form>

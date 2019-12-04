@@ -61,14 +61,14 @@ Component({
     },
 
     afterTapDay(e) {
-      let tranObj = {
-          date: this.data.Date,
-          ifInput: this.data.ifInput
-        },
-        date = `${e.detail.year}-${e.detail.month}-${e.detail.day}`
+      let date = `${e.detail.year}-${e.detail.month}-${e.detail.day}`
       this.setData({
         date: date
       })
+      let tranObj = {
+        date: this.data.date,
+        ifInput: this.data.ifInput
+      }
       this.ifShowCalendar()
       this.triggerEvent('changeDate', tranObj)
     },

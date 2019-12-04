@@ -11,7 +11,6 @@ Component({
 
   methods: {
     hideLogin() {
-      console.log(this.data.Hidden)
       this.setData({
         Hidden: true
       })

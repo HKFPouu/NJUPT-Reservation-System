@@ -19,13 +19,11 @@ Page({
 
     let pageId = option.pageId,
       id = option.id,
-      formId = option.form_id,
       labelList = pageId == 1 ? teamVisitLabel : cognitiveLearningLabel,
       list = pageId == 1 ? teamVisitList : cognitiveLearningList
 
     this.setData({
       id: id,
-      form_id: formId,
       pageId: pageId,
       labelList: labelList,
       list: list
@@ -46,7 +44,7 @@ Page({
     })
   },
 
-  changeStatusRequest(id, status, listUrl, formId) {
+  changeStatusRequest(id, status, listUrl) {
     const userId = app.globalData.userId;
     wx.getUserInfo({
       success(res) {
@@ -55,7 +53,6 @@ Page({
           data: {
             rawDate: res.rawData,
             user_id: userId,
-            form_id: formId,
             signature: res.signature,
             formId: id,
             status: status
@@ -69,16 +66,13 @@ Page({
     })
   },
 
-  changeStatus(page) {
-    let teamVisitList = app.globalData.teamVisitList;
+  changeStatus(page,status) {
     const that = this
     const id = Number(that.data.id)
-    const formId = that.data.form_id
-    const status = teamVisitList[that.data.id].status
     const listUrl = page == 1 ? 'updateTeam' : 'updateLearn'
     wx.checkSession({
       success(res) {
-        that.changeStatusRequest(id, status, listUrl, formId)
+        that.changeStatusRequest(id, status, listUrl)
       },
       fail(res) {
         wx.login({
@@ -89,7 +83,7 @@ Page({
               success(res) {
                 app.globalData.role = res.data.data.roleId
                 app.globalData.userId = res.data.data.userId
-                that.changeStatusRequest(id, status, listUrl, formId)
+                that.changeStatusRequest(id, status, listUrl)
               }
             })
           }
@@ -108,13 +102,13 @@ Page({
       changeStatusText == '取消申请' ?
         teamVisitList[this.data.id].status = 1 :
         teamVisitList[this.data.id].status = 2
-      this.changeStatus(1)
+      this.changeStatus(1,teamVisitList[this.data.id].status)
     } else {
       if (changeStatusText == '取消申请')
         cognitiveLearningList[this.data.id].status = 1
       else
         cognitiveLearningList[this.data.id].status = 2
-      this.changeStatus(2)
+      this.changeStatus(2,teamVisitList[this.data.id].status)
     }
 
     this.setData({

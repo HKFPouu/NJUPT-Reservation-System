@@ -14,12 +14,12 @@ Page({
       pageId: pageId
     })
 
-    if (this.data.role == 1) { // 更改身份 0普通 1管理
+    if (this.data.role == 0) { // 更改身份 0普通 1管理
       let page = this.data.pageId == 1 ? 'teamVisit' : 'cognitiveLearning'
       wx.navigateTo({
         url: `../${page}/${page}`
       })
-    } else {
+    } else  {
       const that = this
       let listUrl = this.data.pageId == 1 ? 'teamVisit' : 'learnVisit'
       wx.checkSession({
