@@ -5,7 +5,7 @@ Page({
   data: {
     today: '',
     ifInput: false,
-    ifSubmit: true,
+    ifSubmit: false,
     ifSuccessSubmit: false,
     teamFormScene: ['通信展览馆', '校史展览馆'],
     alumni: [{
@@ -134,7 +134,7 @@ Page({
         console.log(key)
         result = false;
         this.setData({
-          ifSubmit: false
+          ifSubmit: true
         })
         break;
       }
@@ -142,26 +142,42 @@ Page({
     if (result) {
       let form = this.data.form
       form.form_id = e.detail.formId
+      console.log(form.form_id)
       this.setData({
         form: form
       })
-      if (util.submit(this.data.form, 1, this.data.ifSuccessSubmit)) {
-        this.setData({
-          ifSuccessSubmit: true
-        })
-      }
 
+      util.submit(this.data.form, 1)
+      this.setData({
+        ifSuccessSubmit: true
+      })
     }
 
   },
 
   onReady() {
-    this.loginComponent = this.selectComponent("#login");
+    this.dialogComponent = this.selectComponent(".dialog");
   },
 
-  confirmEvent() {
-    this.setData({
-      ifSubmit: true
-    })
-  }
+  confirmEvent(e) {
+    let target = e.target.id.replace(/dialog /, '')
+    this.dialogComponent.hideLogin()
+    if (target == 'successSubmit') {
+      this.setData({
+        ifSubmit: false
+      })
+    } else {
+      this.setData({
+        ifSuccessSubmit: false
+      })
+    }
+  },
+
+  // successSubmit() {
+
+  //   this.setData({
+  //     ifSuccessSubmit: false
+  //   })
+  //   console.log(this.data.ifSuccessSubmit)
+  // }
 })

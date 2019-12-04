@@ -1,10 +1,6 @@
 <form class="team" report-submit='true' bindsubmit="submit">
-  <view hidden="{{ifSubmit}}">
-    <login id='login' title='提交提示' content='还有没有填写的表单数据哦' confirmText='知道了' bind:confirmEvent='confirmEvent'></login>
-  </view>
-  <view hidden="{{!ifSuccessSubmit}}">
-    <login id='login' title='提交提示' content='提交成功' confirmText='知道了' bind:confirmEvent='confirmEvent'></login>
-  </view>
+  <login class='dialog empty' title='提交提示' content='还有没有填写的表单数据哦' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSubmit}}" ></login>
+  <login class='dialog successSubmit' title='提交提示' content='提交成功' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSuccessSubmit}}" ></login>
   <view class="teamForm">
     <Date bind:changeDate="changeDate" bind:changeTime="changeTime" today="{{today}}" />
     <labelValue label="联系单位" name="contactUnit" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />

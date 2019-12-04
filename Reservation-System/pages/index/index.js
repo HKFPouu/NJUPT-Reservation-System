@@ -14,7 +14,7 @@ Page({
       pageId: pageId
     })
 
-    if (this.data.role == 0) {
+    if (this.data.role == 1) { // 更改身份 0普通 1管理
       let page = this.data.pageId == 1 ? 'teamVisit' : 'cognitiveLearning'
       wx.navigateTo({
         url: `../${page}/${page}`

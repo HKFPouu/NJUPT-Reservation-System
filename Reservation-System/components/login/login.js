@@ -1,35 +1,19 @@
 Component({
   options: {
-    multipleSlots: true
+    multipleSlots: true,
   },
   properties: {
-    title: {
-      type: String,
-      value: '标题'
-    },
-    content: {
-      type: String,
-      value: '弹窗内容'
-    },
-    confirmText: {
-      type: String,
-      value: '确定'
-    }
-  },
-
-  data: {
-    isShow: true
+    title: String,
+    content: String,
+    confirmText: String,
+    Hidden: Boolean
   },
 
   methods: {
     hideLogin() {
+      console.log(this.data.Hidden)
       this.setData({
-        isShow: !this.data.isShow
-      })
-    },
-    showLogin() {
-      this.setData({
-        isShow: !this.data.isShow
+        Hidden: true
       })
     },
     confirmEvent() {

@@ -19,7 +19,7 @@ Page({
 
     let pageId = option.pageId,
       id = option.id,
-      formId = option.formId,
+      formId = option.form_id,
       labelList = pageId == 1 ? teamVisitLabel : cognitiveLearningLabel,
       list = pageId == 1 ? teamVisitList : cognitiveLearningList
 
@@ -73,7 +73,7 @@ Page({
     let teamVisitList = app.globalData.teamVisitList;
     const that = this
     const id = Number(that.data.id)
-    const formId = that.data.formId
+    const formId = that.data.form_id
     const status = teamVisitList[that.data.id].status
     const listUrl = page == 1 ? 'updateTeam' : 'updateLearn'
     wx.checkSession({

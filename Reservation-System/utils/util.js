@@ -30,7 +30,7 @@ function submit(form, listId) {
 
 function submitRequest(form,listUrl,userId) {
   let sendJson = JSON.stringify(form)
-
+  
   wx.getUserInfo({
     success(res) {
       wx.request({
@@ -44,7 +44,6 @@ function submitRequest(form,listUrl,userId) {
         },
         success(res) {
           console.log(res)
-          return true
         }
       })
     }
