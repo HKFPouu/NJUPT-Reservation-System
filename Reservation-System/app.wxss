@@ -4,8 +4,20 @@
   letter-spacing: 5rpx;
   text-align: center;
 }
-.flex{
+
+.flex {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.label-value {
+  height: 8vh;
+}
+
+.label-value-input {
+  border: 1px solid #ddd;
+  width: 70%;
+  padding-left: 8rpx;
+  z-index: 1;
 }

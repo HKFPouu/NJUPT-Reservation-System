@@ -67,6 +67,7 @@ Page({
             wx.navigateTo({
               url: `../administrator/administrator?id=${id}`
             })
+            
           }
         })
       }

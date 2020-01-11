@@ -1,11 +1,10 @@
 {
   "usingComponents": {
     "stepper": "../../components/stepper/stepper",
-    "labelValue": "../../components/labelValue/labelValue",
     "scene": "../../components/scene/scene",
     "contact": "../../components/contact/contact",
     "Date": "../../components/Date/Date",
-    "login":"../../components/login/login"
+    "dialog":"../../components/dialog/dialog"
   },
   "navigationBarTitleText": "团队参观"
 }

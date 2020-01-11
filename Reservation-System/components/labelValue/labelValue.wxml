@@ -1,4 +1,0 @@
-<view class="label-value flex">
-  <text class="Label" decode="{{true}}">{{label}}：</text>
-  <input type="{{type}}" bindblur="changeStatus" id="{{name}}" class="label-value-input" disabled="{{ifInput}}"/>
-</view>

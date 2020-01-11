@@ -1,3 +1,4 @@
+@import "../../app.wxss";
 .team {
   background: #f5f5f5;
 }

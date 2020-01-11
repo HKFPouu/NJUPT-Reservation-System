@@ -1,4 +1,3 @@
-const app = getApp();
 const util = require("../../utils/util");
 
 Page({
@@ -17,6 +16,38 @@ Page({
         value: '是'
       }
     ],
+    teamLabel: [{
+        label: '联系单位',
+        name: 'contactUnit',
+        type: 'text'
+      },
+      {
+        label: '陪同领导',
+        name: 'accompanyLeader',
+        type: 'text'
+      },
+      {
+        label: '联&ensp;系&ensp;人',
+        name: 'contactMan',
+        type: 'text'
+      },
+      {
+        label: '联系电话',
+        name: 'contactPhone',
+        type: 'number'
+      }
+    ],
+    guestLabel: [{
+        label: '来&emsp;&emsp;宾',
+        name: 'guest',
+        type: 'text'
+      },
+      {
+        label: '单位职务',
+        name: 'UnitPosition',
+        type: 'text'
+      }
+    ],
     form: {
       contactUnit: '测试',
       accompanyLeader: '测试',
@@ -25,7 +56,7 @@ Page({
       place: '测试',
       date: '2019-11-20',
       time: '15:30',
-      gust: '测试',
+      guest: '测试',
       UnitPosition: '测试',
       peopleNumber: 1,
       ifAlumni: false,
@@ -94,29 +125,29 @@ Page({
     })
   },
 
-  changeStatus(child) {
+  changeStatus(e) {
     let form = this.data.form;
-    switch (child.detail.name) {
+    switch (e.currentTarget.id) {
       case 'contactUnit':
-        form.contactUnit = child.detail.value
+        form.contactUnit = e.detail.value
         break;
       case 'accompanyLeader':
-        form.accompanyLeader = child.detail.value
+        form.accompanyLeader = e.detail.value
         break;
       case 'contactMan':
-        form.contactMan = child.detail.value
+        form.contactMan = e.detail.value
         break;
       case 'contactPhone':
-        form.contactPhone = child.detail.value
+        form.contactPhone = e.detail.value
         break;
-      case 'gust':
-        form.gust = child.detail.value
+      case 'guest':
+        form.guest = e.detail.value
         break;
       case 'UnitPosition':
-        form.UnitPosition = child.detail.value
+        form.UnitPosition = e.detail.value
         break;
       case 'welcomeMessage':
-        form.welcomeMessage = child.detail.value
+        form.welcomeMessage = e.detail.value
         break;
       default:
         break;

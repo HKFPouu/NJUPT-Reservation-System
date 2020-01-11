@@ -1,7 +1,3 @@
 {
-  "usingComponents": {
-    "label":"../../components/labelValue/labelValue",
-    "scene":"../../components/scene/scene"
-  },
   "navigationBarTitleText": "具体信息"
 }

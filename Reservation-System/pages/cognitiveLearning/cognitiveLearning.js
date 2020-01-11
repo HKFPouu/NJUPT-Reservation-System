@@ -8,6 +8,30 @@ Page({
     ifInput: false,
     ifSubmit: false,
     ifSuccessSubmit: false,
+    teamLabel: [{
+        label: '联&ensp;系&ensp;人',
+        name: 'contactMan',
+        type: 'text'
+      }, {
+        label: '联系单位',
+        name: 'contactUnit',
+        type: 'text'
+      }, {
+        label: '电&emsp;&emsp;话',
+        name: 'contactPhone',
+        type: 'number'
+      }
+    ],
+    guestLabel: [{
+      label: '专&emsp;&emsp;业',
+      name: 'major',
+      type: 'text'
+    }, {
+      label: '班&emsp;&emsp;级',
+      name: 'class',
+      type: 'text'
+    }
+  ],
     form: {
       contactMan: '1',
       contactUnit: '1',
@@ -38,26 +62,26 @@ Page({
     })
   },
 
-  changeStatus(child) {
+  changeStatus(e) {
     let form = this.data.form;
-    switch (child.detail.name) {
+    switch (e.detail.name) {
       case 'contactMan':
-        form.contactMan = child.detail.value
+        form.contactMan = e.detail.value
         break;
       case 'contactUnit':
-        form.contactUnit = child.detail.value
+        form.contactUnit = e.detail.value
         break;
       case 'contactMan':
-        form.contactMan = child.detail.value
+        form.contactMan = e.detail.value
         break;
       case 'contactPhone':
-        form.contactPhone = child.detail.value
+        form.contactPhone = e.detail.value
         break;
       case 'major':
-        form.major = child.detail.value
+        form.major = e.detail.value
         break;
       case 'class':
-        form.class = child.detail.value
+        form.class = e.detail.value
         break;
     }
     this.setData({

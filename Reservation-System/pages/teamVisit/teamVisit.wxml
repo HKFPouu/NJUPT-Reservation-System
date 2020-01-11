@@ -1,20 +1,28 @@
+<template name="label">
+  <view class="flex label-value">
+    <text class="Label" decode="{{true}}">{{item.label}}：</text>
+    <input type="{{text}}" bindblur="changeStatus" id="{{item.name}}" class="label-value-input" disabled="{{ifInput}}" />
+  </view>
+</template>
+
+<dialog class='dialog' title='提交提示' content='还有没有填写的表单数据哦' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSubmit}}"></dialog>
+<dialog class='dialog' id="successSubmit" title='提交提示' content='提交成功' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSuccessSubmit}}"></dialog>
+
 <form class="team" report-submit='true' bindsubmit="submit">
-  <login class='dialog' title='提交提示' content='还有没有填写的表单数据哦' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSubmit}}" ></login>
-  <login class='dialog'  id="successSubmit" title='提交提示' content='提交成功' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSuccessSubmit}}" ></login>
   <view class="teamForm">
-    <Date bind:changeDate="changeDate" bind:changeTime="changeTime" today="{{today}}" id="calendar"/>
-    <labelValue label="联系单位" name="contactUnit" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
-    <labelValue label="陪同领导" name="accompanyLeader" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
-    <labelValue label="联&ensp;系&ensp;人" name="contactMan" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
-    <labelValue label="联系电话" name="contactPhone" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="number" />
+    <Date bind:changeDate="changeDate" bind:changeTime="changeTime" today="{{today}}" id="calendar" />
+    <view class="teamLabel" wx:for="{{teamLabel}}" wx:key="index">
+      <template is="label" data="{{item}}"></template>
+    </view>
     <scene placeArr="{{teamFormScene}}" bind:changeScene="changeScene" />
   </view>
   <view class="teamGuest">
     <view class="teamGuestText">
       <text>嘉宾信息</text>
     </view>
-    <labelValue label="来&emsp;&emsp;宾" name="gust" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
-    <labelValue label="单位职务" name="UnitPosition" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
+    <view class="teamLabel" wx:for-items="{{guestLabel}}" wx:key="index">
+      <template is="label" data="{{item}}"></template>
+    </view>
     <stepper bind:changeNum="changeNum" />
     <view class="alumni flex">
       <label class="Label">是否校友：</label>
@@ -25,7 +33,10 @@
       </radio-group>
     </view>
     <view class="welcome">
-      <labelValue label="欢&ensp;迎&ensp;语" name="welcomeMessage" bind:changeStatus="changeStatus" ifInput="{{ifInput}}" type="text" />
+      <view class="flex label-value">
+        <text class="Label" decode="{{true}}">欢&ensp;迎&ensp;语：</text>
+        <input type="text" bindblur="changeStatus" id="welcomeMessage" class="label-value-input" disabled="{{ifInput}}" />
+      </view>
       <view class="welcomeDemo">
         <label>欢迎语将在通信展览馆门口液晶屏上显示。</label>
         <label>例如：欢迎XX参观通信展览馆</label>

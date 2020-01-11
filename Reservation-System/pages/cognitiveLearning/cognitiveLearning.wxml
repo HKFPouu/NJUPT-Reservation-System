@@ -1,19 +1,28 @@
+<template name="label">
+  <view class="flex label-value">
+    <text class="Label" decode="{{true}}">{{item.label}}：</text>
+    <input type="{{text}}" bindblur="changeStatus" id="{{item.name}}" class="label-value-input" disabled="{{ifInput}}"/>
+  </view>
+</template>
+
+<dialog class='dialog empty' title='提交提示' content='还有没有填写的表单数据哦' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSubmit}}"></dialog>
+<dialog class='dialog successSubmit' title='提交提示' content='提交成功' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSuccessSubmit}}"></dialog>
+
 <form class="cognitiveLearning" report-submit='true' bindsubmit="submit">
-  <login class='dialog empty' title='提交提示' content='还有没有填写的表单数据哦' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSubmit}}"></login>
-  <login class='dialog successSubmit' title='提交提示' content='提交成功' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSuccessSubmit}}"></login>
   <view class="cognitiveLearningForm">
     <Date bind:changeDate="changeDate" bind:changeTime="changeTime" today="{{today}}" />
-    <labelValue label="联&ensp;系&ensp;人" name="contactMan" bind:changeStatus="changeStatus" type="text" />
-    <labelValue label="联系单位" name="contactUnit" bind:changeStatus="changeStatus" type="text" />
-    <labelValue label="电&emsp;&emsp;话" name="contactPhone" bind:changeStatus="changeStatus" type="number" />
+    <view class="teamLabel" wx:for-items="{{teamLabel}}" wx:key="index">
+      <template is="label" data="{{item}}"></template>    
+    </view>
     <scene placeArr="{{cognitiveLearningScene}}" bind:changeScene="changeScene" type="text" />
   </view>
   <view class="cognitiveLearningGuest">
     <view class="cognitiveLearningGuestText">
       <text>学生信息</text>
     </view>
-    <labelValue label="专&emsp;&emsp;业" name="major" bind:changeStatus="changeStatus" type="text" />
-    <labelValue label="班&emsp;&emsp;级" name="class" bind:changeStatus="changeStatus" type="text" />
+    <view class="guestLabel" wx:for-items="{{guestLabel}}" wx:key="index">
+      <template is="label" data="{{item}}"></template>    
+    </view>
     <stepper />
   </view>
   <view class="cognitiveLearningSignature flex">

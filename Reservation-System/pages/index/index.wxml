@@ -1,11 +1,11 @@
 <view class="container">
-  <login id='login' 
+  <dialog id='login' 
     title='登录提示' 
     content='小程序需要您的授权才能提供更好的服务哦' 
     confirmText='知道了' 
     bind:confirmEvent='confirmEvent'
     Hidden="{{false}}"> 
-  </login>
+  </dialog>
   <view class="identify-words">
     <text class="full-name">南邮校史展览馆、校史陈列馆</text>
     <text class="apply-text">预约申请</text>

@@ -1,15 +1,103 @@
 const app = getApp()
-const teamVisitLabel = ['联系单位', '陪同领导', '联&ensp;系&ensp;人', '联系电话', '参观场所', '参观日期', '参观时间', '来&emsp;&emsp;宾', '单位职务', '人&emsp;&emsp;数', '是否校友', '欢&ensp;迎&ensp;语']
-const cognitiveLearningLabel = ['联&ensp;系&ensp;人', '联系单位', '联系电话', '参观场所', '参观日期', '参观时间', '专业', '班级']
 
 Page({
   data: {
     pageId: null,
     formId: null,
     id: null,
-    labelList: [],
-    information: {},
     list: [],
+    teamVisitList: {
+      contactUnit: {
+        label: '联系单位',
+        value: ''
+      },
+      accompanyLeader: {
+        label: '陪同领导',
+        value: ''
+      },
+      contactMan: {
+        label: '联&ensp;系&ensp;人',
+        value: ''
+      },
+      contactPhone: {
+        label: '联系电话',
+        value: ''
+      },
+      contactUnit: {
+        label: '参观场所',
+        value: ''
+      },
+      date: {
+        label: '参观日期',
+        value: ''
+      },
+      time: {
+        label: '参观时间',
+        value: ''
+      },
+      guest: {
+        label: '来&emsp;&emsp;宾',
+        value: ''
+      },
+      position: {
+        label: '单位职务',
+        value: ''
+      },
+      peopleNumber: {
+        label: '人&emsp;&emsp;数',
+        value: ''
+      },
+      ifAlumni: {
+        label: '是否校友',
+        value: ''
+      },
+      welcomeMesag: {
+        label: '欢迎语',
+        value: ''
+      },
+      pricpleSign:  {
+        label: '负&ensp;责&ensp;人',
+        value: ''
+      }
+    },
+    cognitiveLearningList: {
+      contactMan: {
+        label: '联&ensp;系&ensp;人',
+        value: ''
+      },
+      contactUnit: {
+        label: '联系单位',
+        value: ''
+      },
+      contactPhone: {
+        label: '联系电话',
+        value: ''
+      },
+      place: {
+        label: '参观场所',
+        value: ''
+      },
+      date: {
+        label: '参观日期',
+        value: ''
+      },
+      time: {
+        label: '参观时间',
+        value: ''
+      },
+      major: {
+        label: '专业',
+        value: ''
+      },
+      class: {
+        label: '班级',
+          value: ''
+      },
+      pricpleSign:  {
+        label: '负&ensp;责&ensp;人',
+        value: ''
+      }
+    },
     changeStatusText: '确认申请'
   },
 
@@ -19,13 +107,11 @@ Page({
 
     let pageId = option.pageId,
       id = option.id,
-      labelList = pageId == 1 ? teamVisitLabel : cognitiveLearningLabel,
-      list = pageId == 1 ? teamVisitList : cognitiveLearningList
+      list = option.pageId == 1 ? teamVisitList : cognitiveLearningList
 
     this.setData({
+      pageId:pageId,
       id: id,
-      pageId: pageId,
-      labelList: labelList,
       list: list
     })
 
@@ -33,13 +119,20 @@ Page({
       changeStatusText = information.status == 1 ? '取消申请' : '确认申请'
     information.ifAlumni = information.ifAlumni ? '是' : '否'
     delete information.status
-    if (this.data.pageId == 2)
-      delete information.ifAlumni
-    information.place.replace(/,/, '')
     delete information.formId
+    if (option.pageId == 2)
+      delete information.ifAlumni
+    information.place.replace(/,/, ' ')
+
+
+    let label = option.pageId == 1 ? this.data.teamVisitList : this.data.cognitiveLearningList
+
+    for (let key in information)
+      if (label[key])
+        label[key]['value'] = information[key]
 
     this.setData({
-      information: information,
+      label: label,
       changeStatusText: changeStatusText
     })
   },
@@ -102,13 +195,14 @@ Page({
       changeStatusText == '取消申请' ?
         teamVisitList[this.data.id].status = 1 :
         teamVisitList[this.data.id].status = 2
-      this.changeStatus(1,teamVisitList[this.data.id].status)
+      console.log(teamVisitList)
+      this.changeStatus(1, teamVisitList[this.data.id].status)
     } else {
       if (changeStatusText == '取消申请')
         cognitiveLearningList[this.data.id].status = 1
       else
         cognitiveLearningList[this.data.id].status = 2
-      this.changeStatus(2,teamVisitList[this.data.id].status)
+      this.changeStatus(2, teamVisitList[this.data.id].status)
     }
 
     this.setData({
