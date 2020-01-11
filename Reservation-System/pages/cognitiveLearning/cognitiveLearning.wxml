@@ -7,6 +7,7 @@
 
 <dialog class='dialog empty' title='提交提示' content='还有没有填写的表单数据哦' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSubmit}}"></dialog>
 <dialog class='dialog successSubmit' title='提交提示' content='提交成功' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{!ifSuccessSubmit}}"></dialog>
+<dialog class='dialog download' title='下载提示' content='点击下列按钮复制下载网址到浏览器打开下载' confirmText='复制到浏览器打开' bind:confirmEvent='confirmEvent' Hidden="{{!ifDownload}}"></dialog>
 
 <form class="cognitiveLearning" report-submit='true' bindsubmit="submit">
   <view class="cognitiveLearningForm">

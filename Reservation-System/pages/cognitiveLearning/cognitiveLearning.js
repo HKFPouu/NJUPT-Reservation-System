@@ -7,21 +7,21 @@ Page({
     today: '',
     ifInput: false,
     ifSubmit: false,
+    ifDownload: false,
     ifSuccessSubmit: false,
     teamLabel: [{
-        label: '联&ensp;系&ensp;人',
-        name: 'contactMan',
-        type: 'text'
-      }, {
-        label: '联系单位',
-        name: 'contactUnit',
-        type: 'text'
-      }, {
-        label: '电&emsp;&emsp;话',
-        name: 'contactPhone',
-        type: 'number'
-      }
-    ],
+      label: '联&ensp;系&ensp;人',
+      name: 'contactMan',
+      type: 'text'
+    }, {
+      label: '联系单位',
+      name: 'contactUnit',
+      type: 'text'
+    }, {
+      label: '电&emsp;&emsp;话',
+      name: 'contactPhone',
+      type: 'number'
+    }],
     guestLabel: [{
       label: '专&emsp;&emsp;业',
       name: 'major',
@@ -30,9 +30,8 @@ Page({
       label: '班&emsp;&emsp;级',
       name: 'class',
       type: 'text'
-    }
-  ],
-  form: {
+    }],
+    form: {
       contactMan: '1',
       contactUnit: '1',
       contactPhone: '1',
@@ -160,13 +159,34 @@ Page({
       wx.navigateTo({
         url: '../index/index'
       })
-    } else {
+    } else if (target == 'empty') {
       this.setData({
         ifSuccessSubmit: false
+      })
+    } else {
+      wx.setClipboardData({
+        data: 'http://139.9.140.149:8080/main/%E5%8F%82%E8%A7%82%E9%A2%84%E7%BA%A6%E5%8D%95(%E7%A9%BA).doc',
+        success: function (res) {
+          wx.getClipboardData({
+            success: function (res) {
+              wx.showToast({
+                title: '复制成功'
+              })
+            }
+          })
+        }
+      })
+
+      this.setData({
+        ifDownload: true
       })
     }
   },
 
-  download() {}
+  download() {
+    this.setData({
+      ifDownload: false
+    })
+  }
 
 })
