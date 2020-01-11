@@ -3,7 +3,18 @@ const app = getApp()
 Page({
   data: {
     role: '',
-    pageId: 0
+    pageId: 0,
+    bnrUrl: [{
+      "url": "../../static/1.jpg"
+    }, {
+      "url": "../../static/2.jpg"
+    }, {
+      "url": "../../static/3.jpg"
+    }, {
+      "url": "../../static/4.jpg"
+    }, {
+      "url": "../../static/5.jpg"
+    }]
   },
   bindEntranceTap(event) {
     let role = app.globalData.role,
@@ -14,7 +25,7 @@ Page({
       pageId: pageId
     })
 
-    if (this.data.role == 0) { // 更改身份 0普通 1管理
+    if (this.data.role == 1) { // 更改身份 0普通 1管理
       let page = this.data.pageId == 1 ? 'teamVisit' : 'cognitiveLearning'
       wx.navigateTo({
         url: `../${page}/${page}`

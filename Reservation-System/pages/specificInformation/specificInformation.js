@@ -195,7 +195,6 @@ Page({
       changeStatusText == '取消申请' ?
         teamVisitList[this.data.id].status = 1 :
         teamVisitList[this.data.id].status = 2
-      console.log(teamVisitList)
       this.changeStatus(1, teamVisitList[this.data.id].status)
     } else {
       if (changeStatusText == '取消申请')

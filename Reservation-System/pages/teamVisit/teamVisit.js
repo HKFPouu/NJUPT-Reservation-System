@@ -3,7 +3,6 @@ const util = require("../../utils/util");
 Page({
   data: {
     today: '',
-    ifInput: false,
     ifSubmit: false,
     ifSuccessSubmit: false,
     teamFormScene: ['通信展览馆', '校史展览馆'],
@@ -67,7 +66,7 @@ Page({
   },
 
   onShow() {
-    let today = new Date().toLocaleDateString().replace(/\\/g, "-");
+    let today = util.getDay(3)
     this.setData({
       today: today
     })
@@ -90,22 +89,18 @@ Page({
   },
 
   changeDate(child) {
-    let form = this.data.form,
-      ifInput = child.detail.ifInput
-    form.date = child.detail.date
+    let form = this.data.form
+    form.date = child.detail
     this.setData({
-      form: form,
-      ifInput: ifInput
+      form: form
     })
   },
 
   changeTime(child) {
-    let form = this.data.form,
-      ifInput = child.detail.ifInput
-    form.time = child.detail.time
+    let form = this.data.form
+    form.time = child.detail
     this.setData({
-      form: form,
-      ifInput: ifInput
+      form: form
     })
   },
 

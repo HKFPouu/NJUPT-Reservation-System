@@ -32,7 +32,7 @@ Page({
       type: 'text'
     }
   ],
-    form: {
+  form: {
       contactMan: '1',
       contactUnit: '1',
       contactPhone: '1',
@@ -48,7 +48,7 @@ Page({
   },
 
   onShow() {
-    let today = new Date().toLocaleDateString().replace(/\\/g, "-");
+    let today = util.getDay(3)
     this.setData({
       today: today
     })

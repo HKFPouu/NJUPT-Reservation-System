@@ -11,10 +11,10 @@
 }
 
 .identify-words {
-  background: #96A4D2;
   width: 100%;
   height: 50vh;
   position: relative;
+  color: whitesmoke;
 }
 
 .full-name {
@@ -80,4 +80,18 @@
 .footer {
   color: rgb(204, 202, 202);
   font-size: 30rpx;
+}
+
+.u-wrp-bnr {
+  width: 100%;
+  height: 600rpx;
+  display: block;
+  position: relative;
+  background: #f0f0f0;
+}
+
+.u-img-slide {
+  width: 100%;
+  height: inherit;
+  filter: blur(3rpx);
 }

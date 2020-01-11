@@ -1,7 +1,7 @@
 <template name="label">
   <view class="flex label-value">
     <text class="Label" decode="{{true}}">{{item.label}}：</text>
-    <input type="{{text}}" bindblur="changeStatus" id="{{item.name}}" class="label-value-input" disabled="{{ifInput}}" />
+    <input type="{{text}}" bindblur="changeStatus" id="{{item.name}}" class="label-value-input" />
   </view>
 </template>
 

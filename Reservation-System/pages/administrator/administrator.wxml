@@ -3,7 +3,7 @@
     <view class="administrator-teamVisit-list flex" catchtap = "specificInformation" id="{{key}}item" >
       <text>{{item.date}}</text>
       <text>{{item.time}}</text>
-      <text style="width:100rpx">{{item.contactMan}}</text>
+      <text class="hideText">{{item.contactMan}}</text>
       <text>{{item.status}}</text>
     </view>
   </view>

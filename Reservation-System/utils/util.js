@@ -1,5 +1,6 @@
 module.exports = {
-  submit: submit
+  submit: submit,
+  getDay: getDay
 }
 
 function submit(form, listId) {
@@ -49,4 +50,24 @@ function submitRequest(form,listUrl,userId) {
       })
     }
   })
+}
+
+function getDay(day) {
+  let today = new Date();
+  let targetday_milliseconds = today.getTime() + 1000 * 60 * 60 * 24 * day;
+  today.setTime(targetday_milliseconds);
+  let tYear = today.getFullYear();
+  let tMonth = today.getMonth();
+  let tDate = today.getDate();
+  tMonth = doHandleMonth(tMonth + 1);
+  tDate = doHandleMonth(tDate);
+  return tYear + "-" + tMonth + "-" + tDate;
+}
+
+function doHandleMonth(month) {
+  let m = month;
+  if (month.toString().length == 1) {
+    m = "0" + month;
+  }
+  return m;
 }

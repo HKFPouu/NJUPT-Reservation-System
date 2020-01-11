@@ -199,10 +199,11 @@
       }
       todayDate() {
         const e = new Date();
+        console.log(e.getFullYear(),e.getMonth() + 1, e.getDate()+3)
         return {
           year: e.getFullYear(),
           month: e.getMonth() + 1,
-          date: e.getDate()
+          date: e.getDate() + 3
         };
       }
       todayTimestamp() {

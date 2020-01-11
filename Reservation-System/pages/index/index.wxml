@@ -1,23 +1,24 @@
 <view class="container">
-  <dialog id='login' 
-    title='登录提示' 
-    content='小程序需要您的授权才能提供更好的服务哦' 
-    confirmText='知道了' 
-    bind:confirmEvent='confirmEvent'
-    Hidden="{{false}}"> 
-  </dialog>
+  <dialog id='login' title='登录提示' content='小程序需要您的授权才能提供更好的服务哦' confirmText='知道了' bind:confirmEvent='confirmEvent' Hidden="{{false}}"></dialog>
   <view class="identify-words">
+    <swiper class='u-wrp-bnr' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true'>
+      <block wx:for="{{bnrUrl}}" wx:for-index="index">
+        <swiper-item>
+          <image src='{{item.url}}' class='u-img-slide' mode='aspectFill'></image>
+        </swiper-item>
+      </block>
+    </swiper>
     <text class="full-name">南邮校史展览馆、校史陈列馆</text>
     <text class="apply-text">预约申请</text>
   </view>
   <view class="crest-logo">
-    <image class="crest-logo-img" src="../../static/crest.png" ></image>
+    <image class="crest-logo-img" src="../../static/crest.png"></image>
   </view>
-  <view class="team-visit" bindtap = "bindEntranceTap" data-alpha-beta="1" >
+  <view class="team-visit" bindtap="bindEntranceTap" data-alpha-beta="1">
     <text class="entrance">团队参观</text>
     <text class="introduction">通信展览馆 校史展览馆 —— 团体参观</text>
   </view>
-  <view class="cognitive-learning" bindtap = "bindEntranceTap" data-alpha-beta="2">
+  <view class="cognitive-learning" bindtap="bindEntranceTap" data-alpha-beta="2">
     <text class="entrance">认知学习</text>
     <text class="introduction">通信展览馆 校史陈列馆 —— 学生认知实习参观</text>
   </view>

@@ -22,13 +22,11 @@ Component({
     calendarConfig: {
       theme: 'elegant',
       inverse: true,
-      markToday: '今',
       highlightToday: true,
       disablePastDay: true
     },
     ifShowCalendar: 'hiddenCalendar',
     ifShowTimeSelector: 'hiddenTimeSelector',
-    ifInput: false,
     hours: hours,
     hour: 8,
     min: 0,
@@ -40,22 +38,18 @@ Component({
   methods: {
     ifShowCalendar() {
       if (this.data.ifShowTimeSelector !== 'showTimeSelector') {
-        let ifShowCalendar = this.data.ifShowCalendar == 'showCalendar' ? 'hiddenCalendar' : 'showCalendar',
-          ifInput = !this.data.ifInput
+        let ifShowCalendar = this.data.ifShowCalendar == 'showCalendar' ? 'hiddenCalendar' : 'showCalendar'
         this.setData({
-          ifShowCalendar: ifShowCalendar,
-          ifInput: ifInput
+          ifShowCalendar: ifShowCalendar
         })
       }
     },
 
     ifShowTimeSelector() {
       if (this.data.ifShowCalendar !== 'showCalendar') {
-        let ifShowTimeSelector = this.data.ifShowTimeSelector == 'showTimeSelector' ? 'hiddenTimeSelector' : 'showTimeSelector',
-          ifInput = !this.data.ifInput
+        let ifShowTimeSelector = this.data.ifShowTimeSelector == 'showTimeSelector' ? 'hiddenTimeSelector' : 'showTimeSelector'
         this.setData({
-          ifShowTimeSelector: ifShowTimeSelector,
-          ifInput: ifInput
+          ifShowTimeSelector: ifShowTimeSelector
         })
       }
     },
@@ -65,12 +59,8 @@ Component({
       this.setData({
         date: date
       })
-      let tranObj = {
-        date: this.data.date,
-        ifInput: this.data.ifInput
-      }
       this.ifShowCalendar()
-      this.triggerEvent('changeDate', tranObj)
+      this.triggerEvent('changeDate', this.data.date)
     },
 
     changeTime: function (e) {
@@ -104,18 +94,14 @@ Component({
         mins: mins
       })
 
-
       let time = `${this.data.hour}:${this.data.min}`
       this.setData({
         time: time
       })
       this.ifShowCalendar()
-      let tranObj = {
-        time: this.data.time,
-        ifInput: this.data.ifInput
-      }
-      this.triggerEvent('changeTime', tranObj)
+      this.triggerEvent('changeTime',this.data.time)
 
-    },
+    }
+
   }
 })
